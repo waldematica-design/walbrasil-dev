@@ -88,6 +88,18 @@ const projects = [
     image: "/demos/advocacia/advogada-hero.png",
     imageAlt: "Imagem institucional da landing page Brasil Cotrim Advocacia",
   },
+  {
+    eyebrow: "SITE MÉDICO DEMONSTRATIVO",
+    title: "Clínica Silva",
+    description:
+      "Site demonstrativo para clínica médica com Gastroenterologia, Nutrição e Endocrinologia, equipe em destaque, estrutura da clínica e foco em agendamento.",
+    stack: ["Next.js", "Landing Page", "UX/UI", "Responsivo"],
+    href: "/projetos/clinica-silva",
+    accent: "from-emerald-300/15 via-cyan-400/10 to-transparent",
+    type: "Projeto demonstrativo",
+    image: "/demos/clinica-silva/recepcao.jpg",
+    imageAlt: "Recepção da Clínica Silva em projeto demonstrativo",
+  },
 ];
 
 const technologies = [
@@ -391,7 +403,9 @@ export default function Home() {
                       className={`transition duration-500 hover:scale-[1.02] ${
                         project.title === "Brasil Cotrim Advocacia"
                           ? "object-cover object-[center_22%]"
-                          : "object-cover object-top"
+                          : project.title === "Clínica Silva"
+                            ? "object-cover object-center"
+                            : "object-cover object-top"
                       }`}
                     />
 
