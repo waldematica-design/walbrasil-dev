@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wal Brasil
 
-## Getting Started
+Professional web development portfolio showcasing modern websites, web applications, AI-assisted development and real projects.
 
-First, run the development server:
+## About
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Wal Brasil is a professional portfolio focused on web development, combining modern technologies with AI-assisted development workflows, including vibe coding techniques.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The project was built to present real development work, technologies, services and case studies in a clear and responsive interface.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Vercel
+- GitHub
 
-## Learn More
+## Featured Projects
 
-To learn more about Next.js, take a look at the following resources:
+The portfolio includes case studies such as:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Waldemática IA — Full-Stack Educational Platform with AI
+- Waldemática — WordPress Website, SEO & Content Platform
+- Blog Waldemática
+- Professional website demonstrations and landing pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development Approach
 
-## Deploy on Vercel
+The development workflow combines traditional software development practices with AI-assisted coding to accelerate:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Implementation
+- Debugging
+- Refactoring
+- Testing
+- UI iteration
+- Rapid prototyping
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+AI is used as a development tool while final technical decisions, testing and validation remain under human responsibility.
+
+## Main Capabilities
+
+- Responsive web development
+- Next.js and React applications
+- TypeScript development
+- Landing pages and institutional websites
+- API integrations
+- AI integrations
+- WordPress development
+- Website maintenance and bug fixing
+- SEO-focused implementation
+
+## Live Website
+
+https://walbrasil.dev
+
+## Deployment
+
+The project is versioned with GitHub and continuously deployed with Vercel.
+
+---
+
+Built and maintained by **Wal Brasil**.
