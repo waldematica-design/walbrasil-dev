@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SolutionSelector from "./SolutionSelector";
 
 const services = [
   {
@@ -325,6 +326,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <SolutionSelector />
 
         <section id="servicos" className="border-y border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
