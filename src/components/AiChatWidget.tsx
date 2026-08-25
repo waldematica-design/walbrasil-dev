@@ -1,6 +1,13 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+import ReactMarkdown from "react-markdown";
 
 type ChatMessage = {
   id: string;
@@ -8,24 +15,37 @@ type ChatMessage = {
   content: string;
 };
 
-const VISITOR_TOKEN_KEY = "walbrasil_ai_visitor_token";
+const VISITOR_TOKEN_KEY =
+  "walbrasil_ai_visitor_token";
 
 const INITIAL_MESSAGE: ChatMessage = {
   id: "welcome",
+
   role: "assistant",
+
   content:
     "Olá! 👋 Sou o agente de IA do @walbrasil.dev. Posso te ajudar a planejar sites, sistemas, automações e soluções com inteligência artificial. O que você gostaria de criar?",
 };
 
 export default function AiChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    INITIAL_MESSAGE,
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] =
+    useState(false);
 
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const [message, setMessage] =
+    useState("");
+
+  const [messages, setMessages] =
+    useState<ChatMessage[]>([
+      INITIAL_MESSAGE,
+    ]);
+
+  const [isLoading, setIsLoading] =
+    useState(false);
+
+  const messagesEndRef =
+    useRef<HTMLDivElement | null>(
+      null
+    );
 
   useEffect(() => {
     if (!isOpen) return;
@@ -33,83 +53,134 @@ export default function AiChatWidget() {
     messagesEndRef.current?.scrollIntoView({
       behavior: "smooth",
     });
-  }, [messages, isLoading, isOpen]);
+  }, [
+    messages,
+    isLoading,
+    isOpen,
+  ]);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
-    const trimmedMessage = message.trim();
+    const trimmedMessage =
+      message.trim();
 
-    if (!trimmedMessage || isLoading) {
+    if (
+      !trimmedMessage ||
+      isLoading
+    ) {
       return;
     }
 
-    const userMessage: ChatMessage = {
-      id: crypto.randomUUID(),
-      role: "user",
-      content: trimmedMessage,
-    };
+    const userMessage: ChatMessage =
+      {
+        id: crypto.randomUUID(),
+        role: "user",
+        content:
+          trimmedMessage,
+      };
 
-    setMessages((current) => [...current, userMessage]);
+    setMessages((current) => [
+      ...current,
+      userMessage,
+    ]);
+
     setMessage("");
+
     setIsLoading(true);
 
     try {
       const visitorToken =
-        window.localStorage.getItem(VISITOR_TOKEN_KEY);
+        window.localStorage.getItem(
+          VISITOR_TOKEN_KEY
+        );
 
-      const response = await fetch("/api/ai-chat", {
-        method: "POST",
+      const response =
+        await fetch(
+          "/api/ai-chat",
+          {
+            method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
 
-        body: JSON.stringify({
-          message: trimmedMessage,
-          visitorToken: visitorToken || undefined,
-        }),
-      });
+            body: JSON.stringify({
+              message:
+                trimmedMessage,
 
-      const data = await response.json();
+              visitorToken:
+                visitorToken ||
+                undefined,
+            }),
+          }
+        );
 
-      if (!response.ok || !data.reply) {
+      const data =
+        await response.json();
+
+      if (
+        !response.ok ||
+        !data.reply
+      ) {
         throw new Error(
-          data.error || "Não foi possível obter uma resposta."
+          data.error ||
+            "Não foi possível obter uma resposta."
         );
       }
 
-      if (data.visitorToken) {
+      if (
+        data.visitorToken
+      ) {
         window.localStorage.setItem(
           VISITOR_TOKEN_KEY,
           data.visitorToken
         );
       }
 
-      const assistantMessage: ChatMessage = {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        content: data.reply,
-      };
+      const assistantMessage: ChatMessage =
+        {
+          id: crypto.randomUUID(),
 
-      setMessages((current) => [
-        ...current,
-        assistantMessage,
-      ]);
+          role:
+            "assistant",
+
+          content:
+            data.reply,
+        };
+
+      setMessages(
+        (current) => [
+          ...current,
+          assistantMessage,
+        ]
+      );
     } catch (error) {
-      console.error("Erro no chat:", error);
+      console.error(
+        "Erro no chat:",
+        error
+      );
 
-      const errorMessage: ChatMessage = {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        content:
-          "Não consegui responder agora. Tente novamente em alguns instantes.",
-      };
+      const errorMessage: ChatMessage =
+        {
+          id: crypto.randomUUID(),
 
-      setMessages((current) => [
-        ...current,
-        errorMessage,
-      ]);
+          role:
+            "assistant",
+
+          content:
+            "Não consegui responder agora. Tente novamente em alguns instantes.",
+        };
+
+      setMessages(
+        (current) => [
+          ...current,
+          errorMessage,
+        ]
+      );
     } finally {
       setIsLoading(false);
     }
@@ -127,13 +198,16 @@ export default function AiChatWidget() {
 
               <div className="mt-1 flex items-center gap-2 text-xs text-slate-400">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
+
                 Online
               </div>
             </div>
 
             <button
               type="button"
-              onClick={() => setIsOpen(false)}
+              onClick={() =>
+                setIsOpen(false)
+              }
               aria-label="Fechar chat"
               className="flex h-9 w-9 items-center justify-center rounded-full text-xl text-slate-400 transition hover:bg-white/10 hover:text-white"
             >
@@ -141,29 +215,119 @@ export default function AiChatWidget() {
             </button>
           </div>
 
-          <div className="flex-1 space-y-4 overflow-y-auto bg-slate-950 p-4">
-            {messages.map((chatMessage) => {
-              const isUser = chatMessage.role === "user";
+          <div className="flex-1 space-y-4 overflow-y-auto bg-slate-950 p-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {messages.map(
+              (chatMessage) => {
+                const isUser =
+                  chatMessage.role ===
+                  "user";
 
-              return (
-                <div
-                  key={chatMessage.id}
-                  className={`flex ${
-                    isUser ? "justify-end" : "justify-start"
-                  }`}
-                >
+                return (
                   <div
-                    className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                    key={
+                      chatMessage.id
+                    }
+                    className={`flex ${
                       isUser
-                        ? "rounded-br-md bg-blue-600 text-white"
-                        : "rounded-bl-md bg-slate-800 text-slate-100"
+                        ? "justify-end"
+                        : "justify-start"
                     }`}
                   >
-                    {chatMessage.content}
+                    <div
+                      className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                        isUser
+                          ? "rounded-br-md bg-blue-600 text-white"
+                          : "rounded-bl-md bg-slate-800 text-slate-100"
+                      }`}
+                    >
+                      {isUser ? (
+                        <div className="whitespace-pre-wrap">
+                          {
+                            chatMessage.content
+                          }
+                        </div>
+                      ) : (
+                        <ReactMarkdown
+                          components={{
+                            p: ({
+                              children,
+                            }) => (
+                              <p className="mb-2 last:mb-0">
+                                {
+                                  children
+                                }
+                              </p>
+                            ),
+
+                            ul: ({
+                              children,
+                            }) => (
+                              <ul className="my-2 list-disc space-y-1 pl-5">
+                                {
+                                  children
+                                }
+                              </ul>
+                            ),
+
+                            ol: ({
+                              children,
+                            }) => (
+                              <ol className="my-2 list-decimal space-y-1 pl-5">
+                                {
+                                  children
+                                }
+                              </ol>
+                            ),
+
+                            li: ({
+                              children,
+                            }) => (
+                              <li>
+                                {
+                                  children
+                                }
+                              </li>
+                            ),
+
+                            strong: ({
+                              children,
+                            }) => (
+                              <strong className="font-semibold text-white">
+                                {
+                                  children
+                                }
+                              </strong>
+                            ),
+
+                            a: ({
+                              href,
+                              children,
+                            }) => (
+                              <a
+                                href={
+                                  href
+                                }
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="break-all text-blue-300 underline underline-offset-2 hover:text-blue-200"
+                              >
+                                {
+                                  children
+                                }
+                              </a>
+                            ),
+                          }}
+                        >
+                          {
+                            chatMessage.content
+                          }
+                        </ReactMarkdown>
+                      )}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              }
+            )}
 
             {isLoading && (
               <div className="flex justify-start">
@@ -175,37 +339,59 @@ export default function AiChatWidget() {
               </div>
             )}
 
-            <div ref={messagesEndRef} />
+            <div
+              ref={
+                messagesEndRef
+              }
+            />
           </div>
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={
+              handleSubmit
+            }
             className="border-t border-white/10 bg-slate-900 p-3"
           >
             <div className="flex items-end gap-2">
               <textarea
-                value={message}
-                onChange={(event) =>
-                  setMessage(event.target.value)
+                value={
+                  message
                 }
-                onKeyDown={(event) => {
+                onChange={(
+                  event
+                ) =>
+                  setMessage(
+                    event.target
+                      .value
+                  )
+                }
+                onKeyDown={(
+                  event
+                ) => {
                   if (
-                    event.key === "Enter" &&
+                    event.key ===
+                      "Enter" &&
                     !event.shiftKey
                   ) {
                     event.preventDefault();
+
                     event.currentTarget.form?.requestSubmit();
                   }
                 }}
                 placeholder="Digite sua mensagem..."
                 rows={1}
-                disabled={isLoading}
+                disabled={
+                  isLoading
+                }
                 className="max-h-28 min-h-[44px] flex-1 resize-none rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-blue-500 disabled:opacity-60"
               />
 
               <button
                 type="submit"
-                disabled={!message.trim() || isLoading}
+                disabled={
+                  !message.trim() ||
+                  isLoading
+                }
                 aria-label="Enviar mensagem"
                 className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-lg text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40"
               >
@@ -222,7 +408,12 @@ export default function AiChatWidget() {
 
       <button
         type="button"
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={() =>
+          setIsOpen(
+            (current) =>
+              !current
+          )
+        }
         aria-label={
           isOpen
             ? "Fechar agente de IA"
@@ -231,13 +422,15 @@ export default function AiChatWidget() {
         className="fixed bottom-5 right-4 z-[100] flex items-center gap-3 rounded-full bg-blue-600 px-4 py-3 font-medium text-white shadow-2xl transition hover:-translate-y-0.5 hover:bg-blue-500 sm:right-6"
       >
         <span className="text-xl">
-          {isOpen ? "×" : "🤖"}
+          {isOpen
+            ? "×"
+            : "🤖"}
         </span>
 
         <span className="hidden text-sm sm:inline">
           {isOpen
             ? "Fechar"
-            : "Agente de IA @walbrasil.dev"}
+            : "Teste nosso Agente de IA"}
         </span>
       </button>
     </>
