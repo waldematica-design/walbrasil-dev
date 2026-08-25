@@ -20,9 +20,7 @@ const VISITOR_TOKEN_KEY =
 
 const INITIAL_MESSAGE: ChatMessage = {
   id: "welcome",
-
   role: "assistant",
-
   content:
     "Olá! 👋 Sou o agente de IA do @walbrasil.dev. Posso te ajudar a planejar sites, sistemas, automações e soluções com inteligência artificial. O que você gostaria de criar?",
 };
@@ -47,6 +45,15 @@ export default function AiChatWidget() {
       null
     );
 
+  const textareaRef =
+    useRef<HTMLTextAreaElement | null>(
+      null
+    );
+
+  /*
+   * Mantém o chat sempre rolado
+   * para a mensagem mais recente.
+   */
   useEffect(() => {
     if (!isOpen) return;
 
@@ -58,6 +65,39 @@ export default function AiChatWidget() {
     isLoading,
     isOpen,
   ]);
+
+  /*
+   * Quando o chat abre,
+   * coloca o cursor no campo.
+   */
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const timeout = window.setTimeout(() => {
+      textareaRef.current?.focus();
+    }, 100);
+
+    return () =>
+      window.clearTimeout(timeout);
+  }, [isOpen]);
+
+  /*
+   * Quando a IA termina de responder,
+   * devolve o foco automaticamente
+   * ao campo de mensagem.
+   */
+  useEffect(() => {
+    if (!isOpen || isLoading) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      textareaRef.current?.focus();
+    }, 80);
+
+    return () =>
+      window.clearTimeout(timeout);
+  }, [isLoading, isOpen]);
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>
@@ -88,8 +128,15 @@ export default function AiChatWidget() {
     ]);
 
     setMessage("");
-
     setIsLoading(true);
+
+    /*
+     * Mantém o foco no textarea
+     * mesmo enquanto a IA responde.
+     */
+    window.setTimeout(() => {
+      textareaRef.current?.focus();
+    }, 0);
 
     try {
       const visitorToken =
@@ -144,10 +191,8 @@ export default function AiChatWidget() {
       const assistantMessage: ChatMessage =
         {
           id: crypto.randomUUID(),
-
           role:
             "assistant",
-
           content:
             data.reply,
         };
@@ -167,10 +212,8 @@ export default function AiChatWidget() {
       const errorMessage: ChatMessage =
         {
           id: crypto.randomUUID(),
-
           role:
             "assistant",
-
           content:
             "Não consegui responder agora. Tente novamente em alguns instantes.",
         };
@@ -198,7 +241,6 @@ export default function AiChatWidget() {
 
               <div className="mt-1 flex items-center gap-2 text-xs text-slate-400">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
-
                 Online
               </div>
             </div>
@@ -354,6 +396,9 @@ export default function AiChatWidget() {
           >
             <div className="flex items-end gap-2">
               <textarea
+                ref={
+                  textareaRef
+                }
                 value={
                   message
                 }
@@ -375,15 +420,20 @@ export default function AiChatWidget() {
                   ) {
                     event.preventDefault();
 
-                    event.currentTarget.form?.requestSubmit();
+                    if (
+                      !isLoading
+                    ) {
+                      event.currentTarget.form?.requestSubmit();
+                    }
                   }
                 }}
-                placeholder="Digite sua mensagem..."
-                rows={1}
-                disabled={
+                placeholder={
                   isLoading
+                    ? "Você pode continuar digitando..."
+                    : "Digite sua mensagem..."
                 }
-                className="max-h-28 min-h-[44px] flex-1 resize-none overflow-y-auto rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-blue-500 disabled:opacity-60 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                rows={1}
+                className="max-h-28 min-h-[44px] flex-1 resize-none overflow-y-auto rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-blue-500 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               />
 
               <button
