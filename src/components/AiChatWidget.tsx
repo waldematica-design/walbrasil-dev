@@ -51,6 +51,27 @@ export default function AiChatWidget() {
     );
 
   /*
+   * Impede a página que está atrás
+   * de rolar enquanto o chat está aberto.
+   */
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow =
+      "hidden";
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+    };
+  }, [isOpen]);
+
+  /*
    * Mantém o chat sempre rolado
    * para a mensagem mais recente.
    */
@@ -73,9 +94,10 @@ export default function AiChatWidget() {
   useEffect(() => {
     if (!isOpen) return;
 
-    const timeout = window.setTimeout(() => {
-      textareaRef.current?.focus();
-    }, 100);
+    const timeout =
+      window.setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 100);
 
     return () =>
       window.clearTimeout(timeout);
@@ -91,9 +113,10 @@ export default function AiChatWidget() {
       return;
     }
 
-    const timeout = window.setTimeout(() => {
-      textareaRef.current?.focus();
-    }, 80);
+    const timeout =
+      window.setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 80);
 
     return () =>
       window.clearTimeout(timeout);
@@ -114,13 +137,11 @@ export default function AiChatWidget() {
       return;
     }
 
-    const userMessage: ChatMessage =
-      {
-        id: crypto.randomUUID(),
-        role: "user",
-        content:
-          trimmedMessage,
-      };
+    const userMessage: ChatMessage = {
+      id: crypto.randomUUID(),
+      role: "user",
+      content: trimmedMessage,
+    };
 
     setMessages((current) => [
       ...current,
@@ -144,27 +165,25 @@ export default function AiChatWidget() {
           VISITOR_TOKEN_KEY
         );
 
-      const response =
-        await fetch(
-          "/api/ai-chat",
-          {
-            method: "POST",
+      const response = await fetch(
+        "/api/ai-chat",
+        {
+          method: "POST",
 
-            headers: {
-              "Content-Type":
-                "application/json",
-            },
+          headers: {
+            "Content-Type":
+              "application/json",
+          },
 
-            body: JSON.stringify({
-              message:
-                trimmedMessage,
+          body: JSON.stringify({
+            message: trimmedMessage,
 
-              visitorToken:
-                visitorToken ||
-                undefined,
-            }),
-          }
-        );
+            visitorToken:
+              visitorToken ||
+              undefined,
+          }),
+        }
+      );
 
       const data =
         await response.json();
@@ -179,9 +198,7 @@ export default function AiChatWidget() {
         );
       }
 
-      if (
-        data.visitorToken
-      ) {
+      if (data.visitorToken) {
         window.localStorage.setItem(
           VISITOR_TOKEN_KEY,
           data.visitorToken
@@ -191,18 +208,14 @@ export default function AiChatWidget() {
       const assistantMessage: ChatMessage =
         {
           id: crypto.randomUUID(),
-          role:
-            "assistant",
-          content:
-            data.reply,
+          role: "assistant",
+          content: data.reply,
         };
 
-      setMessages(
-        (current) => [
-          ...current,
-          assistantMessage,
-        ]
-      );
+      setMessages((current) => [
+        ...current,
+        assistantMessage,
+      ]);
     } catch (error) {
       console.error(
         "Erro no chat:",
@@ -212,18 +225,15 @@ export default function AiChatWidget() {
       const errorMessage: ChatMessage =
         {
           id: crypto.randomUUID(),
-          role:
-            "assistant",
+          role: "assistant",
           content:
             "Não consegui responder agora. Tente novamente em alguns instantes.",
         };
 
-      setMessages(
-        (current) => [
-          ...current,
-          errorMessage,
-        ]
-      );
+      setMessages((current) => [
+        ...current,
+        errorMessage,
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -232,8 +242,25 @@ export default function AiChatWidget() {
   return (
     <>
       {isOpen && (
-        <div className="fixed bottom-24 right-4 z-[100] flex h-[560px] w-[calc(100vw-2rem)] max-w-[390px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-2xl sm:right-6">
-          <div className="flex items-center justify-between border-b border-white/10 bg-slate-900 px-4 py-4">
+        <div
+          className="
+            fixed inset-0 z-[110]
+            flex h-[100dvh] w-screen
+            flex-col overflow-hidden
+            bg-slate-950
+
+            sm:inset-auto
+            sm:bottom-24
+            sm:right-6
+            sm:h-[560px]
+            sm:w-[390px]
+            sm:rounded-2xl
+            sm:border
+            sm:border-white/10
+            sm:shadow-2xl
+          "
+        >
+          <div className="flex shrink-0 items-center justify-between border-b border-white/10 bg-slate-900 px-4 py-4">
             <div>
               <p className="font-semibold text-white">
                 Agente de IA @walbrasil.dev
@@ -251,13 +278,13 @@ export default function AiChatWidget() {
                 setIsOpen(false)
               }
               aria-label="Fechar chat"
-              className="flex h-9 w-9 items-center justify-center rounded-full text-xl text-slate-400 transition hover:bg-white/10 hover:text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-2xl text-slate-400 transition hover:bg-white/10 hover:text-white"
             >
               ×
             </button>
           </div>
 
-          <div className="flex-1 space-y-4 overflow-y-auto bg-slate-950 p-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="min-h-0 flex-1 space-y-4 overflow-y-auto bg-slate-950 p-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {messages.map(
               (chatMessage) => {
                 const isUser =
@@ -392,7 +419,7 @@ export default function AiChatWidget() {
             onSubmit={
               handleSubmit
             }
-            className="border-t border-white/10 bg-slate-900 p-3"
+            className="shrink-0 border-t border-white/10 bg-slate-900 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pb-3"
           >
             <div className="flex items-end gap-2">
               <textarea
@@ -469,7 +496,20 @@ export default function AiChatWidget() {
             ? "Fechar agente de IA"
             : "Abrir agente de IA do @walbrasil.dev"
         }
-        className="fixed bottom-5 right-4 z-[100] flex items-center gap-3 rounded-full bg-blue-600 px-4 py-3 font-medium text-white shadow-2xl transition hover:-translate-y-0.5 hover:bg-blue-500 sm:right-6"
+        className={`
+          fixed bottom-5 right-4 z-[100]
+          items-center gap-3 rounded-full
+          bg-blue-600 px-4 py-3
+          font-medium text-white shadow-2xl
+          transition hover:-translate-y-0.5
+          hover:bg-blue-500 sm:right-6
+
+          ${
+            isOpen
+              ? "hidden sm:flex"
+              : "flex"
+          }
+        `}
       >
         <span className="text-xl">
           {isOpen
