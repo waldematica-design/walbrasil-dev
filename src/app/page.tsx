@@ -490,7 +490,7 @@ export default function Home() {
                   Projetos técnicos que também viram soluções comerciais.
                 </h2>
                 <p className="mt-5 max-w-3xl leading-7 text-slate-300">
-                  Wal Brasil é Fundador e Desenvolvedor Sênior da TECÉRALE,
+                  Wal Brasil é Fundador e Desenvolvedor da TECÉRALE,
                   agência de tecnologia AI-first focada em agentes de IA,
                   automações, desenvolvimento web e sistemas sob medida.
                 </p>
