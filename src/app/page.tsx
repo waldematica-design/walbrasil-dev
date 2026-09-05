@@ -248,7 +248,7 @@ export default function Home() {
             </div>
 
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
-              Wal Brasil · Fundador e Desenvolvedor Sênior da TECÉRALE
+              Wal Brasil · Fundador e Desenvolvedor da TECÉRALE
             </p>
 
             <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
