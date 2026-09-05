@@ -1,4 +1,41 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+const title = "Landing Page para Advocacia | Case Demonstrativo";
+const description =
+  "Case demonstrativo de landing page para advocacia, com posicionamento premium, hierarquia comercial, responsividade e chamadas para ação.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "https://walbrasil.dev/projetos/landing-page-advocacia",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://walbrasil.dev/projetos/landing-page-advocacia",
+    siteName: "Wal Brasil",
+    title,
+    description,
+    images: [
+      {
+        url: "/demos/advocacia/advogada-hero.png",
+        alt: "Imagem institucional da landing page Brasil Cotrim Advocacia",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/demos/advocacia/advogada-hero.png"],
+  },
+};
 
 const highlights = [
   {

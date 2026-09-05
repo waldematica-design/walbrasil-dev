@@ -1,5 +1,12 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import SolutionSelector from "./SolutionSelector";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://walbrasil.dev/",
+  },
+};
 
 const TECERALE_URL = "https://tecerale.com.br";
 const TECERALE_WHATSAPP_URL =

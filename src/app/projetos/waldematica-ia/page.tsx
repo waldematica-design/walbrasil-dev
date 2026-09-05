@@ -1,4 +1,41 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+const title = "Waldemática IA | Plataforma Web com Next.js, Supabase e IA";
+const description =
+  "Case da Waldemática IA, plataforma educacional com Next.js, Supabase, trilhas adaptativas, avaliações, gestão administrativa e Tutor IA.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "https://walbrasil.dev/projetos/waldematica-ia",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://walbrasil.dev/projetos/waldematica-ia",
+    siteName: "Wal Brasil",
+    title,
+    description,
+    images: [
+      {
+        url: "/projetos/waldematica-ia/dashboard-aluno.jpg",
+        alt: "Dashboard real da plataforma Waldemática IA",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/projetos/waldematica-ia/dashboard-aluno.jpg"],
+  },
+};
 
 const productLayers = [
   {

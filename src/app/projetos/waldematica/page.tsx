@@ -1,4 +1,41 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+const title = "Waldemática | Site WordPress, Elementor e SEO";
+const description =
+  "Case do site Waldemática em WordPress e Elementor, com páginas institucionais, landing pages, gestão de conteúdo, responsividade e SEO.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "https://walbrasil.dev/projetos/waldematica",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://walbrasil.dev/projetos/waldematica",
+    siteName: "Wal Brasil",
+    title,
+    description,
+    images: [
+      {
+        url: "/projetos/waldematica/home-waldematica.png",
+        alt: "Página inicial real do site Waldemática",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/projetos/waldematica/home-waldematica.png"],
+  },
+};
 
 const serviceBlocks = [
   {

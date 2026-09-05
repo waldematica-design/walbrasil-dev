@@ -1,10 +1,40 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 
+const title = "Site para Clínica Médica | Case Demonstrativo";
+const description =
+  "Case demonstrativo de site para clínica médica, com apresentação de especialidades, equipe, estrutura, responsividade e foco em agendamento.";
+
 export const metadata: Metadata = {
-  title: "Clínica Silva | Case Demonstrativo | Wal Brasil",
-  description:
-    "Case demonstrativo de site para clínica médica, com apresentação de especialidades, equipe, estrutura e agendamento.",
+  title,
+  description,
+  alternates: {
+    canonical: "https://walbrasil.dev/projetos/clinica-silva",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://walbrasil.dev/projetos/clinica-silva",
+    siteName: "Wal Brasil",
+    title,
+    description,
+    images: [
+      {
+        url: "/demos/clinica-silva/recepcao.jpg",
+        alt: "Recepção da Clínica Silva em projeto demonstrativo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/demos/clinica-silva/recepcao.jpg"],
+  },
 };
 
 function ArrowIcon() {

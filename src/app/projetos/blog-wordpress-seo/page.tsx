@@ -1,4 +1,41 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+const title = "Blog Waldemática | WordPress, Conteúdo e SEO";
+const description =
+  "Case editorial do Blog Waldemática em WordPress, com arquitetura de conteúdo, SEO on-page, experiência de leitura, responsividade e performance.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "https://walbrasil.dev/projetos/blog-wordpress-seo",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "https://walbrasil.dev/projetos/blog-wordpress-seo",
+    siteName: "Wal Brasil",
+    title,
+    description,
+    images: [
+      {
+        url: "/projetos/blog/estatistica-no-enem.jpg",
+        alt: "Imagem real de artigo do Blog Waldemática",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/projetos/blog/estatistica-no-enem.jpg"],
+  },
+};
 
 const editorialPillars = [
   {
