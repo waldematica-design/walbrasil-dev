@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import TrackedLink from "@/components/TrackedLink";
 import SolutionSelector from "./SolutionSelector";
 
 export const metadata: Metadata = {
@@ -219,14 +220,16 @@ export default function Home() {
             </nav>
 
             <div className="flex items-center gap-3">
-              <a
+              <TrackedLink
                 href={TECERALE_URL}
+                eventName="tecerale_click"
+                ctaLocation="header_tecerale"
                 target="_blank"
                 rel="noreferrer"
                 className="text-xs font-semibold tracking-wide text-blue-300 transition hover:text-white sm:text-sm"
               >
                 TECÉRALE ↗
-              </a>
+              </TrackedLink>
               <a
                 href="#contato"
                 className="hidden rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-[#07111f] transition hover:bg-blue-50 sm:inline-flex"
@@ -501,24 +504,28 @@ export default function Home() {
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <a
+                  <TrackedLink
                     href={TECERALE_URL}
+                    eventName="tecerale_click"
+                    ctaLocation="agency_tecerale"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-400"
                   >
                     Conhecer a TECÉRALE
                     <ExternalIcon />
-                  </a>
-                  <a
+                  </TrackedLink>
+                  <TrackedLink
                     href={TECERALE_WHATSAPP_URL}
+                    eventName="whatsapp_click"
+                    ctaLocation="agency_tecerale"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-6 py-3.5 font-semibold text-emerald-200 transition hover:bg-emerald-400/15 hover:text-white"
                   >
                     Testar o agente no WhatsApp
                     <ExternalIcon />
-                  </a>
+                  </TrackedLink>
                 </div>
               </div>
             </div>
@@ -605,25 +612,29 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
+                <TrackedLink
                   href={TECERALE_WHATSAPP_URL}
+                  eventName="whatsapp_click"
+                  ctaLocation="contact_tecerale"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 font-semibold text-white transition hover:bg-emerald-400"
                 >
                   Conversar com a TECÉRALE
                   <ExternalIcon />
-                </a>
+                </TrackedLink>
 
-                <a
+                <TrackedLink
                   href={TECERALE_URL}
+                  eventName="tecerale_click"
+                  ctaLocation="contact_tecerale"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-[#07111f] transition hover:bg-blue-50"
                 >
                   Conhecer a TECÉRALE
                   <ExternalIcon />
-                </a>
+                </TrackedLink>
 
                 <a
                   href="#projetos"
@@ -636,14 +647,16 @@ export default function Home() {
               <div className="mt-6 flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
                 <span>Comercial automatizado: (17) 99653-5988</span>
                 <span className="hidden text-slate-600 sm:inline">•</span>
-                <a
+                <TrackedLink
                   href={WAL_DIRECT_WHATSAPP_URL}
+                  eventName="whatsapp_click"
+                  ctaLocation="direct_wal"
                   target="_blank"
                   rel="noreferrer"
                   className="transition hover:text-white"
                 >
                   Contato direto com Wal: (19) 98270-4544
-                </a>
+                </TrackedLink>
                 <span className="hidden text-slate-600 sm:inline">•</span>
                 <a
                   href="mailto:contato@walbrasil.dev"

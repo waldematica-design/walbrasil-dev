@@ -117,7 +117,15 @@ async function callTeceraleAgent(
     throw new Error(`Tecérale agent returned ${response.status}.`);
   }
 
-  return data;
+  return {
+    reply: data.reply,
+    leadCreated: "leadCreated" in data && data.leadCreated === true,
+    quoteJustRequested:
+      "quoteJustRequested" in data && data.quoteJustRequested === true,
+    humanHandoffJustRequested:
+      "humanHandoffJustRequested" in data &&
+      data.humanHandoffJustRequested === true,
+  };
 }
 
 async function callLegacyAgent(message: string, visitorToken?: string) {
@@ -198,9 +206,12 @@ export async function POST(request: NextRequest) {
     if (TECERALE_AGENT_API_URL && TECERALE_AGENT_API_TOKEN) {
       const data = await callTeceraleAgent(body, messages, conversationKey);
       return jsonResponse({
-        ...data,
         status: "ok",
+        reply: data.reply,
         visitorToken: conversationKey,
+        leadCreated: data.leadCreated,
+        quoteJustRequested: data.quoteJustRequested,
+        humanHandoffJustRequested: data.humanHandoffJustRequested,
       });
     }
 
@@ -227,6 +238,9 @@ export async function POST(request: NextRequest) {
         typeof data.visitorToken === "string" ? data.visitorToken : conversationKey,
       memoriesUpdated:
         typeof data.memoriesUpdated === "number" ? data.memoriesUpdated : 0,
+      leadCreated: false,
+      quoteJustRequested: false,
+      humanHandoffJustRequested: false,
     });
   } catch {
     console.error("AI chat bridge request failed.");

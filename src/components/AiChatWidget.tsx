@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import ReactMarkdown from "react-markdown";
+import { trackEvent } from "@/lib/analytics";
 
 type ChatMessage = {
   id: string;
@@ -71,6 +72,115 @@ export default function AiChatWidget() {
     useRef<HTMLTextAreaElement | null>(
       null
     );
+
+  const agentStartedTrackedRef =
+    useRef(false);
+
+  function trackAgentStartedOnce(
+    conversationKey: string
+  ) {
+    if (agentStartedTrackedRef.current) {
+      return;
+    }
+
+    const storageKey =
+      `walbrasil-agent-started-v1:${conversationKey}`;
+
+    try {
+      if (
+        window.localStorage.getItem(
+          storageKey
+        )
+      ) {
+        agentStartedTrackedRef.current =
+          true;
+        return;
+      }
+
+      window.localStorage.setItem(
+        storageKey,
+        "1"
+      );
+    } catch {
+      // The in-memory guard still works when storage is blocked.
+    }
+
+    agentStartedTrackedRef.current = true;
+    trackEvent("agent_started", {
+      source_site: "walbrasil.dev",
+      page_path: window.location.pathname,
+    });
+  }
+
+  function trackCommercialOutcomes(
+    data: Record<string, unknown>
+  ) {
+    const parameters = {
+      source_site: "walbrasil.dev",
+      page_path: window.location.pathname,
+    } as const;
+
+    if (data.leadCreated === true) {
+      trackEvent("lead_created", parameters);
+    }
+    if (data.quoteJustRequested === true) {
+      trackEvent("quote_requested", parameters);
+    }
+    if (
+      data.humanHandoffJustRequested ===
+      true
+    ) {
+      trackEvent(
+        "human_handoff_requested",
+        parameters
+      );
+    }
+  }
+
+  function trackResponseLink(
+    href: string | undefined
+  ) {
+    if (!href) return;
+
+    try {
+      const url = new URL(href);
+      const parameters = {
+        source_site: "walbrasil.dev",
+        page_path: window.location.pathname,
+      } as const;
+
+      if (url.hostname === "wa.me") {
+        trackEvent("whatsapp_click", {
+          ...parameters,
+          cta_location:
+            url.pathname === "/5519982704544"
+              ? "agent_reply_direct_wal"
+              : "agent_reply_tecerale",
+        });
+      } else if (
+        url.hostname === "tecerale.com.br"
+      ) {
+        trackEvent("tecerale_click", {
+          ...parameters,
+          cta_location: "agent_reply",
+        });
+      }
+    } catch {
+      // Relative and malformed assistant links are not analytics targets.
+    }
+  }
+
+  function handleLauncherClick() {
+    if (!isOpen) {
+      trackEvent("agent_open", {
+        source_site: "walbrasil.dev",
+        page_path: window.location.pathname,
+        cta_location: "floating_agent",
+      });
+    }
+
+    setIsOpen(!isOpen);
+  }
 
   /*
    * Impede a página que está atrás
@@ -185,6 +295,10 @@ export default function AiChatWidget() {
       const conversationKey =
         getOrCreateConversationKey();
 
+      trackAgentStartedOnce(
+        conversationKey
+      );
+
       const response = await fetch(
         "/api/ai-chat",
         {
@@ -211,31 +325,50 @@ export default function AiChatWidget() {
         }
       );
 
-      const data =
+      const data: unknown =
         await response.json();
 
       if (
         !response.ok ||
-        !data.reply
+        !data ||
+        typeof data !== "object" ||
+        !("reply" in data) ||
+        typeof data.reply !== "string" ||
+        !data.reply.trim()
       ) {
         throw new Error(
-          data.error ||
+          data &&
+            typeof data === "object" &&
+            "error" in data &&
+            typeof data.error === "string"
+            ? data.error
+            :
             "Não foi possível obter uma resposta."
         );
       }
 
-      if (data.visitorToken) {
+      const result = data as Record<
+        string,
+        unknown
+      > & { reply: string };
+
+      if (
+        typeof result.visitorToken ===
+        "string"
+      ) {
         window.localStorage.setItem(
           VISITOR_TOKEN_KEY,
-          data.visitorToken
+          result.visitorToken
         );
       }
+
+      trackCommercialOutcomes(result);
 
       const assistantMessage: ChatMessage =
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          content: data.reply,
+          content: result.reply,
         };
 
       setMessages((current) => [
@@ -404,6 +537,11 @@ export default function AiChatWidget() {
                                 }
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() =>
+                                  trackResponseLink(
+                                    href
+                                  )
+                                }
                                 className="break-all text-blue-300 underline underline-offset-2 hover:text-blue-200"
                               >
                                 {
@@ -511,12 +649,7 @@ export default function AiChatWidget() {
 
       <button
         type="button"
-        onClick={() =>
-          setIsOpen(
-            (current) =>
-              !current
-          )
-        }
+        onClick={handleLauncherClick}
         aria-label={
           isOpen
             ? "Fechar agente de IA"
