@@ -1,6 +1,12 @@
 import Image from "next/image";
 import SolutionSelector from "./SolutionSelector";
 
+const TECERALE_URL = "https://tecerale.com.br";
+const TECERALE_WHATSAPP_URL =
+  "https://wa.me/5517996535988?text=Ol%C3%A1%21%20Vim%20pelo%20portf%C3%B3lio%20walbrasil.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.";
+const WAL_DIRECT_WHATSAPP_URL =
+  "https://wa.me/5519982704544?text=Ol%C3%A1%2C%20Wal.%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20diretamente%20com%20voc%C3%AA.";
+
 const services = [
   {
     title: "WordPress & Elementor",
@@ -35,7 +41,7 @@ const services = [
   {
     title: "Soluções com IA",
     description:
-      "Integração de inteligência artificial a fluxos, plataformas e experiências digitais.",
+      "Agentes, automações e integrações com inteligência artificial desenvolvidos em conexão com a TECÉRALE.",
     icon: "AI",
   },
 ];
@@ -190,7 +196,7 @@ export default function Home() {
               </div>
             </a>
 
-            <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
+            <nav className="hidden items-center gap-7 text-sm text-slate-300 lg:flex">
               <a className="transition hover:text-white" href="#inicio">
                 Início
               </a>
@@ -205,12 +211,22 @@ export default function Home() {
               </a>
             </nav>
 
-            <a
-              href="#contato"
-              className="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-[#07111f] transition hover:bg-blue-50"
-            >
-              Solicitar orçamento
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href={TECERALE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-semibold tracking-wide text-blue-300 transition hover:text-white sm:text-sm"
+              >
+                TECÉRALE ↗
+              </a>
+              <a
+                href="#contato"
+                className="hidden rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-[#07111f] transition hover:bg-blue-50 sm:inline-flex"
+              >
+                Solicitar orçamento
+              </a>
+            </div>
           </div>
         </header>
 
@@ -225,7 +241,7 @@ export default function Home() {
             </div>
 
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
-              Wal Brasil · Web Developer
+              Wal Brasil · Fundador e Desenvolvedor Sênior da TECÉRALE
             </p>
 
             <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
@@ -455,6 +471,53 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="border-y border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/10 via-white/[0.035] to-cyan-400/5 p-7 sm:p-10">
+              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
+              <div className="relative max-w-4xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+                  Agência / TECÉRALE
+                </p>
+                <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+                  Projetos técnicos que também viram soluções comerciais.
+                </h2>
+                <p className="mt-5 max-w-3xl leading-7 text-slate-300">
+                  Wal Brasil é Fundador e Desenvolvedor Sênior da TECÉRALE,
+                  agência de tecnologia AI-first focada em agentes de IA,
+                  automações, desenvolvimento web e sistemas sob medida.
+                </p>
+                <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+                  O walbrasil.dev reúne o portfólio técnico. A TECÉRALE é onde
+                  essas competências se transformam em soluções para empresas e
+                  profissionais.
+                </p>
+
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={TECERALE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-400"
+                  >
+                    Conhecer a TECÉRALE
+                    <ExternalIcon />
+                  </a>
+                  <a
+                    href={TECERALE_WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 px-6 py-3.5 font-semibold text-emerald-200 transition hover:bg-emerald-400/15 hover:text-white"
+                  >
+                    Testar o agente no WhatsApp
+                    <ExternalIcon />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="sobre" className="border-y border-white/10 bg-white/[0.02]">
           <div className="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-2 lg:px-8">
             <div>
@@ -530,27 +593,29 @@ export default function Home() {
                 Tem um projeto em mente?
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Conte o que você precisa. Eu avalio a melhor forma de construir,
-                o prazo e a tecnologia adequada para o projeto.
+                Você pode conhecer meus trabalhos aqui no portfólio e conversar
+                com a TECÉRALE para transformar a ideia em um projeto real.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="https://wa.me/5519982704544?text=Ol%C3%A1%2C%20Wal.%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                  href={TECERALE_WHATSAPP_URL}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 font-semibold text-white transition hover:bg-emerald-400"
                 >
-                  Falar no WhatsApp
+                  Conversar com a TECÉRALE
                   <ExternalIcon />
                 </a>
 
                 <a
-                  href="mailto:contato@walbrasil.dev"
+                  href={TECERALE_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-[#07111f] transition hover:bg-blue-50"
                 >
-                  Enviar e-mail
-                  <ArrowIcon />
+                  Conhecer a TECÉRALE
+                  <ExternalIcon />
                 </a>
 
                 <a
@@ -561,8 +626,17 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="mt-5 flex flex-col gap-1 text-sm text-slate-400 sm:flex-row sm:items-center sm:gap-3">
-                <span>WhatsApp: (19) 98270-4544</span>
+              <div className="mt-6 flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+                <span>Comercial automatizado: (17) 99653-5988</span>
+                <span className="hidden text-slate-600 sm:inline">•</span>
+                <a
+                  href={WAL_DIRECT_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition hover:text-white"
+                >
+                  Contato direto com Wal: (19) 98270-4544
+                </a>
                 <span className="hidden text-slate-600 sm:inline">•</span>
                 <a
                   href="mailto:contato@walbrasil.dev"

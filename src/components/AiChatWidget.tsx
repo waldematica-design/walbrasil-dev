@@ -22,8 +22,30 @@ const INITIAL_MESSAGE: ChatMessage = {
   id: "welcome",
   role: "assistant",
   content:
-    "Olá! 👋 Sou o agente de IA do @walbrasil.dev. Posso te ajudar a planejar sites, sistemas, automações e soluções com inteligência artificial. O que você gostaria de criar?",
+    "Olá! 👋 Sou o agente de IA do @walbrasil.dev. Posso conversar sobre o portfólio e ajudar a planejar sites, sistemas, automações e soluções com inteligência artificial. Para novos projetos, a TECÉRALE transforma esse conhecimento técnico em uma solução comercial. O que você gostaria de criar?",
 };
+
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function getOrCreateConversationKey() {
+  const stored = window.localStorage.getItem(VISITOR_TOKEN_KEY);
+  if (stored && UUID_PATTERN.test(stored)) return stored;
+
+  const conversationKey = crypto.randomUUID();
+  window.localStorage.setItem(VISITOR_TOKEN_KEY, conversationKey);
+  return conversationKey;
+}
+
+function readAttribution() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utmSource: params.get("utm_source"),
+    utmMedium: params.get("utm_medium"),
+    utmCampaign: params.get("utm_campaign"),
+    utmTerm: params.get("utm_term"),
+  };
+}
 
 export default function AiChatWidget() {
   const [isOpen, setIsOpen] =
@@ -160,10 +182,8 @@ export default function AiChatWidget() {
     }, 0);
 
     try {
-      const visitorToken =
-        window.localStorage.getItem(
-          VISITOR_TOKEN_KEY
-        );
+      const conversationKey =
+        getOrCreateConversationKey();
 
       const response = await fetch(
         "/api/ai-chat",
@@ -177,10 +197,16 @@ export default function AiChatWidget() {
 
           body: JSON.stringify({
             message: trimmedMessage,
-
-            visitorToken:
-              visitorToken ||
-              undefined,
+            messages: [
+              ...messages,
+              userMessage,
+            ].map(({ role, content }) => ({
+              role,
+              content,
+            })),
+            conversationKey,
+            visitorToken: conversationKey,
+            attribution: readAttribution(),
           }),
         }
       );
