@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 type ConsentChoice = "granted" | "denied";
 
 const STORAGE_KEY = "walbrasil-cookie-consent-v1";
+const PRIVACY_HASH = "#privacidade";
 
 function gtagConsent(command: "default" | "update", choice: ConsentChoice) {
   window.dataLayer = window.dataLayer ?? [];
@@ -45,19 +46,35 @@ export function CookieConsent({ containerId }: { containerId: string }) {
     if (saved === "granted" || saved === "denied") {
       gtagConsent("update", saved);
       if (saved === "granted") loadGoogleTagManager(containerId);
-      return;
+    } else {
+      setOpen(true);
     }
 
-    setOpen(true);
+    const openFromHash = () => {
+      if (window.location.hash === PRIVACY_HASH) setOpen(true);
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+
+    return () => window.removeEventListener("hashchange", openFromHash);
   }, [containerId]);
 
   function save(nextChoice: ConsentChoice) {
+    const previous = window.localStorage.getItem(STORAGE_KEY) as ConsentChoice | null;
+
     window.localStorage.setItem(STORAGE_KEY, nextChoice);
     setOpen(false);
     gtagConsent("update", nextChoice);
 
+    if (window.location.hash === PRIVACY_HASH) {
+      window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    }
+
     if (nextChoice === "granted") {
       loadGoogleTagManager(containerId);
+    } else if (previous === "granted") {
+      window.location.reload();
     }
   }
 
@@ -73,7 +90,7 @@ export function CookieConsent({ containerId }: { containerId: string }) {
         <div>
           <strong className="text-base">Privacidade e medição.</strong>
           <p className="mt-2 text-sm leading-6 text-slate-300">
-            O site usa recursos essenciais e, somente se você permitir, ferramentas opcionais de medição de acesso por meio do Google Tag Manager.
+            O site usa recursos essenciais e, somente se você permitir, ferramentas opcionais de medição de acesso por meio do Google Tag Manager. Você pode rever essa escolha pelo link de privacidade no rodapé.
           </p>
           <Link
             className="mt-3 inline-block text-sm font-semibold text-blue-300 underline underline-offset-4"
