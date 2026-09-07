@@ -32,5 +32,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.7,
     },
+    {
+      url: "https://walbrasil.dev/politica-de-privacidade/",
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: "https://walbrasil.dev/termos-de-servico/",
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: "https://walbrasil.dev/exclusao-de-dados/",
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
   ];
 }
