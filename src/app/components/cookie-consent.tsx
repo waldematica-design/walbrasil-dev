@@ -7,30 +7,25 @@ type ConsentChoice = "granted" | "denied";
 
 const STORAGE_KEY = "walbrasil-cookie-consent-v1";
 
-declare global {
-  interface Window {
-    dataLayer: unknown[];
-  }
-}
-
-function pushConsent(choice: ConsentChoice) {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push([
+function gtagConsent(command: "default" | "update", choice: ConsentChoice) {
+  window.dataLayer = window.dataLayer ?? [];
+  const args = [
     "consent",
-    "update",
+    command,
     {
       analytics_storage: choice,
       ad_storage: "denied",
       ad_user_data: "denied",
       ad_personalization: "denied",
     },
-  ]);
+  ];
+  window.dataLayer.push(args as unknown as Record<string, unknown>);
 }
 
 function loadGoogleTagManager(containerId: string) {
   if (document.getElementById("walbrasil-gtm-script")) return;
 
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
 
   const script = document.createElement("script");
@@ -45,22 +40,12 @@ export function CookieConsent({ containerId }: { containerId: string }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push([
-      "consent",
-      "default",
-      {
-        analytics_storage: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-      },
-    ]);
+    gtagConsent("default", "denied");
 
     const saved = window.localStorage.getItem(STORAGE_KEY) as ConsentChoice | null;
     if (saved === "granted" || saved === "denied") {
       setChoice(saved);
-      pushConsent(saved);
+      gtagConsent("update", saved);
       if (saved === "granted") loadGoogleTagManager(containerId);
       return;
     }
@@ -73,7 +58,7 @@ export function CookieConsent({ containerId }: { containerId: string }) {
     window.localStorage.setItem(STORAGE_KEY, nextChoice);
     setChoice(nextChoice);
     setOpen(false);
-    pushConsent(nextChoice);
+    gtagConsent("update", nextChoice);
 
     if (nextChoice === "granted") {
       loadGoogleTagManager(containerId);
