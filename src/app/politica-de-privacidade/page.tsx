@@ -70,7 +70,7 @@ export default function PoliticaDePrivacidadePage() {
                 O site utiliza recursos essenciais para funcionar e pode carregar ferramentas opcionais de medição por meio do Google Tag Manager. Essas ferramentas opcionais somente são carregadas depois que o visitante escolhe aceitar a medição no aviso de privacidade.
               </p>
               <p>
-                A escolha é guardada no armazenamento local do navegador. O botão “Privacidade” permite reabrir as preferências e alterar a decisão a qualquer momento.
+                A escolha é guardada no armazenamento local do navegador. O visitante pode reabrir e alterar essa decisão pelo link “Preferências de privacidade” disponível no rodapé do site.
               </p>
             </div>
           </section>
