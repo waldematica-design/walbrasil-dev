@@ -9,6 +9,7 @@ export function LegalFooterBar() {
           <Link className="transition hover:text-blue-300" href="/politica-de-privacidade/">Política de Privacidade</Link>
           <Link className="transition hover:text-blue-300" href="/termos-de-servico/">Termos de Serviço</Link>
           <Link className="transition hover:text-blue-300" href="/exclusao-de-dados/">Exclusão de Dados</Link>
+          <a className="transition hover:text-blue-300" href="#privacidade">Preferências de privacidade</a>
           <a className="transition hover:text-blue-300" href="mailto:contato@walbrasil.dev">Contato</a>
         </nav>
       </div>
