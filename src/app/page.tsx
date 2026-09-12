@@ -68,11 +68,11 @@ const projects = [
     imageAlt: "Dashboard real da plataforma Waldemática IA",
   },
   {
-    eyebrow: "WORDPRESS + ELEMENTOR",
+    eyebrow: "NEXT.JS + VENDAS",
     title: "Waldemática",
     description:
-      "Site institucional e estrutura comercial para cursos, páginas de conversão, conteúdo, formulários e navegação integrada.",
-    stack: ["WordPress", "Elementor", "SEO", "Responsivo"],
+      "Site comercial em Next.js para cursos, páginas de conversão, captação de leads, checkouts e navegação integrada ao ecossistema Waldemática.",
+    stack: ["Next.js", "TypeScript", "Supabase", "SEO"],
     href: "/projetos/waldematica",
     accent: "from-blue-500/20 via-indigo-500/10 to-transparent",
     type: "Projeto real",
@@ -80,11 +80,11 @@ const projects = [
     imageAlt: "Página inicial real do site Waldemática",
   },
   {
-    eyebrow: "CONTEÚDO + SEO",
+    eyebrow: "NEXT.JS + MDX + SEO",
     title: "Blog Waldemática",
     description:
-      "Projeto editorial em WordPress com foco em Matemática, organização de conteúdo, SEO on-page, performance e experiência do usuário.",
-    stack: ["WordPress", "SEO", "Conteúdo", "Performance"],
+      "Projeto editorial em Next.js e MDX com foco em Matemática, SEO técnico, conteúdo estruturado, performance e publicação versionada.",
+    stack: ["Next.js", "MDX", "SEO", "Supabase"],
     href: "/projetos/blog-wordpress-seo",
     accent: "from-amber-300/15 via-emerald-400/10 to-transparent",
     type: "Projeto real",
