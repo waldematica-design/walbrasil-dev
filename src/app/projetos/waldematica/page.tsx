@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: "/projetos/waldematica/home-waldematica.png",
+        url: "/projetos/waldematica/home-waldematica.jpg",
         alt: "Página inicial real do site Waldemática",
       },
     ],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: ["/projetos/waldematica/home-waldematica.png"],
+    images: ["/projetos/waldematica/home-waldematica.jpg"],
   },
 };
 
@@ -206,7 +206,7 @@ export default function WaldematicaCasePage() {
 
                 <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
                   <img
-                    src="/projetos/waldematica/home-waldematica.png"
+                    src="/projetos/waldematica/home-waldematica.jpg"
                     alt="Página inicial pública da Waldemática"
                     width={2254}
                     height={1269}
@@ -389,7 +389,7 @@ export default function WaldematicaCasePage() {
                   alt="Página comercial da Revisão 2ª Fase da Waldemática"
                   width={2254}
                   height={1269}
-                  className="block h-auto w-full rounded-xl border border-white/10 object-contain"
+                  className="block aspect-video w-full rounded-xl border border-white/10 object-cover object-top"
                 />
               </div>
 
