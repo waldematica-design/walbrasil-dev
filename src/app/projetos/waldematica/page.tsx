@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 
-const title = "Waldemática | Site WordPress, Elementor e SEO";
+const title = "Waldemática | Site em Next.js, Supabase e SEO";
 const description =
-  "Case do site Waldemática em WordPress e Elementor, com páginas institucionais, landing pages, gestão de conteúdo, responsividade e SEO.";
+  "Case do site comercial Waldemática em Next.js, com páginas de cursos, captação de leads, checkouts, responsividade, SEO e integrações.";
 
 export const metadata: Metadata = {
   title,
@@ -41,56 +41,38 @@ const serviceBlocks = [
   {
     title: "Arquitetura comercial",
     description:
-      "Páginas institucionais, cursos, ofertas e pontos de contato organizados para orientar o visitante com clareza.",
+      "Home, páginas de cursos, ofertas e CTAs organizados para conduzir o visitante com clareza até a decisão.",
     icon: "01",
   },
   {
-    title: "Landing pages",
+    title: "Captação de leads",
     description:
-      "Páginas de campanha pensadas para apresentar ofertas específicas sem depender da estrutura inteira do site.",
+      "Formulários e rotas server-side conectados ao Supabase para registrar interesse sem expor credenciais no navegador.",
     icon: "02",
   },
   {
-    title: "Autonomia no WordPress",
+    title: "Checkouts integrados",
     description:
-      "Estrutura editável para alterar textos, imagens e informações sem recorrer a programação em tarefas comuns.",
+      "Páginas comerciais conectadas aos links oficiais da Hotmart, mantendo cada produto com sua oferta correta.",
     icon: "03",
   },
   {
-    title: "SEO e conteúdo",
+    title: "SEO e performance",
     description:
-      "Organização on-page, navegação e integração com o blog para sustentar presença orgânica e descoberta de conteúdo.",
+      "Estrutura técnica, metadata, responsividade e deploy contínuo em Vercel para manter o site rápido e indexável.",
     icon: "04",
   },
 ];
 
-const projectPages = [
-  {
-    title: "Home institucional",
-    label: "Marca + posicionamento",
-    tone: "from-blue-500/20 to-cyan-400/10",
-  },
-  {
-    title: "Landing page de curso",
-    label: "Oferta + conversão",
-    tone: "from-violet-500/20 to-blue-400/10",
-  },
-  {
-    title: "Cursos gratuitos",
-    label: "Conteúdo + relacionamento",
-    tone: "from-emerald-500/20 to-cyan-400/10",
-  },
-];
-
 const stack = [
-  "WordPress",
-  "Elementor",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "Supabase",
   "SEO",
-  "HTML",
-  "CSS",
-  "Design Responsivo",
-  "Hospedagem",
-  "Gestão de Conteúdo",
+  "Vercel",
+  "Responsividade",
 ];
 
 function ArrowLeftIcon() {
@@ -126,7 +108,7 @@ export default function WaldematicaCasePage() {
     <main className="min-h-screen bg-[#090c11] text-white antialiased">
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <div className="absolute left-[-8%] top-[-6%] h-[500px] w-[500px] rounded-full bg-blue-500/8 blur-[140px]" />
-        <div className="absolute right-[-10%] top-[18%] h-[420px] w-[420px] rounded-full bg-amber-300/5 blur-[140px]" />
+        <div className="absolute right-[-10%] top-[18%] h-[420px] w-[420px] rounded-full bg-cyan-300/5 blur-[140px]" />
       </div>
 
       <div className="relative z-10">
@@ -166,10 +148,10 @@ export default function WaldematicaCasePage() {
                   Projeto real
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300">
-                  WordPress + Elementor
+                  Next.js + TypeScript
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300">
-                  Site institucional
+                  Site comercial
                 </span>
               </div>
 
@@ -180,15 +162,15 @@ export default function WaldematicaCasePage() {
               <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
                 Um site comercial que conecta{" "}
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-amber-200 bg-clip-text text-transparent">
-                  marca, cursos, conteúdo e conversão
+                  marca, cursos, leads e conversão
                 </span>
               </h1>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                A Waldemática precisava de uma presença digital que funcionasse
-                como vitrine, base editorial e ponto de entrada para cursos e
-                ofertas. O projeto foi estruturado em WordPress para crescer sem
-                transformar cada atualização em um novo trabalho técnico.
+                A Waldemática foi reconstruída em Next.js para concentrar páginas
+                comerciais, cursos, ofertas, captação de leads e integrações em
+                uma base moderna, rápida e versionada. O projeto evolui pelo fluxo
+                GitHub → Vercel e se conecta ao Supabase e aos checkouts oficiais.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -205,66 +187,31 @@ export default function WaldematicaCasePage() {
                   href="/#contato"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
-                  Quero um site semelhante
+                  Quero um projeto semelhante
                 </a>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-5 rounded-[2.4rem] bg-gradient-to-br from-blue-500/8 via-transparent to-amber-300/5 blur-2xl" />
-              <div className="relative rounded-[2rem] border border-white/10 bg-[#11161d] p-4 shadow-2xl shadow-black/30">
-                <div className="rounded-[1.5rem] border border-white/10 bg-[#0d1218] p-4">
-                  <div className="mb-4 flex items-center gap-2 border-b border-white/10 pb-4">
-                    <span className="h-3 w-3 rounded-full bg-white/20" />
-                    <span className="h-3 w-3 rounded-full bg-white/20" />
-                    <span className="h-3 w-3 rounded-full bg-white/20" />
-                    <div className="ml-3 flex-1 rounded-lg bg-white/5 px-3 py-2 text-center text-xs text-slate-500">
-                      waldematica.com.br
-                    </div>
+              <div className="absolute -inset-5 rounded-[2.4rem] bg-gradient-to-br from-blue-500/8 via-transparent to-cyan-300/5 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#11161d] p-4 shadow-2xl shadow-black/30">
+                <div className="mb-4 flex items-center gap-2 border-b border-white/10 pb-4">
+                  <span className="h-3 w-3 rounded-full bg-white/20" />
+                  <span className="h-3 w-3 rounded-full bg-white/20" />
+                  <span className="h-3 w-3 rounded-full bg-white/20" />
+                  <div className="ml-3 flex-1 rounded-lg bg-white/5 px-3 py-2 text-center text-xs text-slate-500">
+                    waldematica.com.br
                   </div>
+                </div>
 
-                  <div className="grid gap-4 md:grid-cols-[1.2fr_.8fr]">
-                    <div className="rounded-2xl bg-[#151b24] p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-300">
-                        Home institucional
-                      </p>
-                      <div className="mt-5 h-3 w-4/5 rounded-full bg-white/20" />
-                      <div className="mt-3 h-3 w-3/5 rounded-full bg-white/12" />
-                      <div className="mt-7 space-y-2">
-                        <div className="h-2 w-full rounded-full bg-white/10" />
-                        <div className="h-2 w-10/12 rounded-full bg-white/10" />
-                        <div className="h-2 w-8/12 rounded-full bg-white/10" />
-                      </div>
-                      <div className="mt-7 flex gap-3">
-                        <span className="h-9 w-28 rounded-xl bg-blue-500/80" />
-                        <span className="h-9 w-24 rounded-xl border border-white/10 bg-white/5" />
-                      </div>
-                    </div>
-
-                    <div className="grid gap-4">
-                      <div className="rounded-2xl border border-white/10 bg-[#151b24] p-4">
-                        <div className="h-2 w-12 rounded-full bg-cyan-300" />
-                        <div className="mt-4 h-2 w-3/4 rounded-full bg-white/15" />
-                        <div className="mt-2 h-2 w-full rounded-full bg-white/10" />
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-[#151b24] p-4">
-                        <div className="h-2 w-12 rounded-full bg-amber-200/80" />
-                        <div className="mt-4 h-2 w-2/3 rounded-full bg-white/15" />
-                        <div className="mt-2 h-2 w-full rounded-full bg-white/10" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 grid grid-cols-3 gap-3">
-                    {["Cursos", "Blog", "Contato"].map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center text-xs text-slate-400"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                  <img
+                    src="/projetos/waldematica/home-waldematica.png"
+                    alt="Página inicial pública da Waldemática"
+                    width={2254}
+                    height={1269}
+                    className="block h-auto w-full object-contain"
+                  />
                 </div>
               </div>
             </div>
@@ -279,15 +226,14 @@ export default function WaldematicaCasePage() {
                   Estratégia
                 </p>
                 <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                  Um site único para várias funções do negócio.
+                  Uma base única para vendas, conteúdo comercial e integrações.
                 </h2>
               </div>
 
               <p className="max-w-2xl text-base leading-7 text-slate-400">
-                A estrutura reúne apresentação da marca, páginas de cursos,
-                landing pages, blog e áreas de contato. Em vez de criar peças
-                isoladas, o projeto foi organizado como um ecossistema comercial
-                e editorial que pode continuar crescendo.
+                A estrutura separa claramente as páginas de produto, mantém os
+                checkouts oficiais, centraliza captura de leads e permite evoluir
+                o site sem depender de plugins ou de uma instalação WordPress.
               </p>
             </div>
           </div>
@@ -305,9 +251,8 @@ export default function WaldematicaCasePage() {
             </div>
 
             <p className="max-w-2xl text-base leading-7 text-slate-400">
-              Como o site é público, estes recortes funcionam como uma visão
-              rápida do trabalho. O visitante também pode abrir a Waldemática e
-              navegar pelas páginas completas ao vivo.
+              A Home apresenta a marca e os produtos, enquanto páginas específicas
+              trabalham dúvidas, cursos gratuitos, ofertas e conversão.
             </p>
           </div>
 
@@ -331,11 +276,11 @@ export default function WaldematicaCasePage() {
               },
               {
                 title: "Cursos gratuitos",
-                label: "Conteúdo + conversão",
+                label: "Lead + relacionamento",
                 image: "/projetos/waldematica/cursos-gratuitos-waldematica.png",
                 alt: "Página de cursos gratuitos da Waldemática",
                 description:
-                  "Página de entrada para experimentação da metodologia, com conteúdo gratuito e conexão com a oferta principal.",
+                  "Página de entrada com formulário de lead, acesso gratuito a conteúdos e conexão com o ecossistema comercial.",
               },
             ].map((item) => (
               <article
@@ -392,30 +337,31 @@ export default function WaldematicaCasePage() {
           <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[1fr_1fr] lg:px-8">
             <div className="rounded-[2rem] border border-blue-400/20 bg-[#121925] p-8">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
-                WordPress como escolha estratégica
+                Next.js como base comercial
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight">
-                O cliente não deveria precisar de programador para tudo.
+                Versionamento, performance e integrações no mesmo projeto.
               </h2>
               <p className="mt-5 leading-7 text-slate-300">
-                Textos, imagens, informações de cursos e páginas podem ser
-                atualizados diretamente no painel. Isso reduz custo, evita
-                dependência técnica e deixa a evolução do site muito mais prática.
+                A migração para Next.js deixou o site alinhado ao restante da
+                infraestrutura moderna da Waldemática. Conteúdo comercial,
+                formulários, SEO e integrações agora evoluem no mesmo repositório,
+                com histórico no Git e deploy automatizado.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {[
-                  ["Editar conteúdo", "Alterar textos, imagens e informações no painel."],
-                  ["Criar novas páginas", "Reaproveitar estruturas e seções já existentes."],
-                  ["Atualizar ofertas", "Modificar cursos e chamadas sem mexer em código."],
-                  ["Manter autonomia", "Resolver tarefas comuns sem depender de desenvolvimento."],
-                ].map(([title, text]) => (
+                  ["Arquitetura modular", "Páginas e componentes organizados para evoluir sem duplicação desnecessária."],
+                  ["Deploy contínuo", "GitHub e Vercel reduzem atrito entre alteração, revisão e publicação."],
+                  ["Integrações", "Supabase, Hotmart e agente comercial conectados ao fluxo real do site."],
+                  ["SEO técnico", "Metadata, URLs e estrutura controladas diretamente pela aplicação."],
+                ].map(([itemTitle, text]) => (
                   <div
-                    key={title}
+                    key={itemTitle}
                     className="rounded-2xl border border-white/10 bg-white/[0.03] p-4"
                   >
                     <div className="mb-3 h-1.5 w-10 rounded-full bg-cyan-300" />
-                    <p className="font-semibold">{title}</p>
+                    <p className="font-semibold">{itemTitle}</p>
                     <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
                   </div>
                 ))}
@@ -433,29 +379,24 @@ export default function WaldematicaCasePage() {
                   </h3>
                 </div>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300">
-                  WordPress
+                  Next.js
                 </span>
               </div>
 
               <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 bg-[#0d1218] p-4">
-                <div
-                  className="overflow-hidden rounded-xl border border-white/10"
-                  style={{ aspectRatio: "2254 / 1269" }}
-                >
-                  <img
-                    src="/projetos/waldematica/home-waldematica.png"
-                    alt="Página inicial pública da Waldemática"
-                    width={2254}
-                    height={1269}
-                    className="block h-full w-full object-contain"
-                  />
-                </div>
+                <img
+                  src="/projetos/waldematica/home-waldematica.png"
+                  alt="Página inicial pública da Waldemática"
+                  width={2254}
+                  height={1269}
+                  className="block h-auto w-full rounded-xl border border-white/10 object-contain"
+                />
               </div>
 
               <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-xl text-sm leading-6 text-slate-400">
-                  O visitante pode conferir o projeto completo em produção,
-                  navegar pelas páginas e avaliar diretamente a experiência do site.
+                  O visitante pode conferir o projeto em produção e navegar pelas
+                  páginas comerciais completas no domínio oficial.
                 </p>
 
                 <a
@@ -479,7 +420,7 @@ export default function WaldematicaCasePage() {
                 O que foi trabalhado
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Muito além de montar páginas no Elementor.
+                Mais do que montar páginas: um ecossistema comercial em Next.js.
               </h2>
             </div>
 
@@ -512,8 +453,8 @@ export default function WaldematicaCasePage() {
                 Ferramentas usadas no projeto
               </h2>
               <p className="mt-5 leading-7 text-slate-400">
-                A stack prioriza edição prática, presença orgânica,
-                responsividade e evolução contínua do site.
+                A stack atual prioriza performance, versionamento, segurança das
+                integrações e evolução contínua do site.
               </p>
             </div>
 
@@ -536,37 +477,35 @@ export default function WaldematicaCasePage() {
               Resultado
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Uma presença digital que centraliza o negócio sem engessar a manutenção.
+              Uma presença comercial moderna, integrada e pronta para evoluir.
             </h2>
           </div>
 
           <div className="space-y-5 text-base leading-7 text-slate-400">
             <p>
-              O site passou a concentrar marca, cursos, conteúdo, landing pages e
-              pontos de contato em um único ecossistema, mantendo consistência
-              visual e uma estrutura simples de evoluir.
+              O site centraliza marca, cursos, ofertas, leads, checkouts e pontos
+              de contato em uma aplicação moderna e responsiva.
             </p>
             <p>
-              O WordPress permite que o projeto continue recebendo novas páginas,
-              campanhas e conteúdos sem recomeçar do zero nem exigir programação
-              para cada pequena alteração.
+              Com Next.js, GitHub, Vercel e Supabase, novas páginas e integrações
+              podem ser adicionadas com versionamento, revisão e deploy contínuo.
             </p>
           </div>
         </section>
 
         <section className="px-6 pb-24 lg:px-8">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-blue-400/20 bg-gradient-to-br from-[#111927] via-[#10161e] to-[#17130d] p-8 sm:p-12 lg:p-16">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-blue-400/20 bg-gradient-to-br from-[#111927] via-[#10161e] to-[#07111f] p-8 sm:p-12 lg:p-16">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
-                Site profissional
+                Desenvolvimento web
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Precisa de um site profissional que continue fácil de administrar?
+                Precisa de um site comercial com estrutura para crescer?
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Posso estruturar o projeto em WordPress, Elementor ou
-                desenvolvimento sob medida, escolhendo a solução adequada para
-                o negócio e evitando complexidade desnecessária.
+                Posso estruturar a solução com a tecnologia adequada ao projeto,
+                priorizando clareza, performance, integrações úteis e manutenção
+                sem complexidade desnecessária.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
