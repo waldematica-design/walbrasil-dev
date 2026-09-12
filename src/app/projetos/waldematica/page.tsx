@@ -309,7 +309,7 @@ export default function WaldematicaCasePage() {
                       alt={item.alt}
                       width={2254}
                       height={1269}
-                      className="block h-full w-full object-contain transition duration-500 group-hover:scale-[1.015]"
+                      className="block h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.015]"
                     />
                   </div>
                 </a>
@@ -385,7 +385,7 @@ export default function WaldematicaCasePage() {
 
               <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 bg-[#0d1218] p-4">
                 <img
-                  src="/projetos/waldematica/home-waldematica.png"
+                  src="/projetos/waldematica/revisao-2a-fase-waldematica.jpg"
                   alt="Página comercial da Revisão 2ª Fase da Waldemática"
                   width={2254}
                   height={1269}

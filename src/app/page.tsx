@@ -76,7 +76,7 @@ const projects = [
     href: "/projetos/waldematica",
     accent: "from-blue-500/20 via-indigo-500/10 to-transparent",
     type: "Projeto real",
-    image: "/projetos/waldematica/home-waldematica.png",
+    image: "/projetos/waldematica/home-waldematica.jpg",
     imageAlt: "Página inicial real do site Waldemática",
   },
   {
