@@ -261,7 +261,7 @@ export default function WaldematicaCasePage() {
               {
                 title: "Home institucional",
                 label: "Marca + posicionamento",
-                image: "/projetos/waldematica/home-waldematica.png",
+                image: "/projetos/waldematica/home-waldematica.jpg",
                 alt: "Página inicial do site Waldemática",
                 description:
                   "Apresentação da marca, cursos, proposta de valor e navegação principal em uma página comercial completa.",
@@ -375,7 +375,7 @@ export default function WaldematicaCasePage() {
                     Projeto publicado
                   </p>
                   <h3 className="mt-2 text-xl font-semibold">
-                    Site acessível publicamente
+                    Revisão 2ª Fase | Fuvest e Unicamp
                   </h3>
                 </div>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300">
@@ -386,7 +386,7 @@ export default function WaldematicaCasePage() {
               <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 bg-[#0d1218] p-4">
                 <img
                   src="/projetos/waldematica/home-waldematica.png"
-                  alt="Página inicial pública da Waldemática"
+                  alt="Página comercial da Revisão 2ª Fase da Waldemática"
                   width={2254}
                   height={1269}
                   className="block h-auto w-full rounded-xl border border-white/10 object-contain"
@@ -395,17 +395,16 @@ export default function WaldematicaCasePage() {
 
               <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-xl text-sm leading-6 text-slate-400">
-                  O visitante pode conferir o projeto em produção e navegar pelas
-                  páginas comerciais completas no domínio oficial.
+                  Uma das páginas comerciais do ecossistema Waldemática, com identidade própria, argumentação de venda, benefícios e CTAs para a Revisão 2ª Fase.
                 </p>
 
                 <a
-                  href="https://waldematica.com.br"
+                  href="https://waldematica.com.br/revisao-2a-fase/"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-blue-200"
                 >
-                  Abrir Waldemática
+                  Abrir Revisão 2ª Fase
                   <ExternalIcon />
                 </a>
               </div>
