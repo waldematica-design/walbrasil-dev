@@ -269,7 +269,7 @@ export default function WaldematicaCasePage() {
               {
                 title: "Perguntas frequentes",
                 label: "Informação + decisão",
-                image: "/projetos/waldematica/faq-waldematica.png",
+                image: "/projetos/waldematica/faq-waldematica.jpg",
                 alt: "Seção de perguntas frequentes e formas de pagamento do site Waldemática",
                 description:
                   "FAQ organizado para responder objeções, explicar os cursos e facilitar a decisão do visitante.",
@@ -277,7 +277,7 @@ export default function WaldematicaCasePage() {
               {
                 title: "Cursos gratuitos",
                 label: "Lead + relacionamento",
-                image: "/projetos/waldematica/cursos-gratuitos-waldematica.png",
+                image: "/projetos/waldematica/cursos-gratuitos-waldematica.jpg",
                 alt: "Página de cursos gratuitos da Waldemática",
                 description:
                   "Página de entrada com formulário de lead, acesso gratuito a conteúdos e conexão com o ecossistema comercial.",
