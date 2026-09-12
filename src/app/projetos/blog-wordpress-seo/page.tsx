@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 
-const title = "Blog Waldemática | WordPress, Conteúdo e SEO";
+const title = "Blog Waldemática | Next.js, MDX e SEO";
 const description =
-  "Case editorial do Blog Waldemática em WordPress, com arquitetura de conteúdo, SEO on-page, experiência de leitura, responsividade e performance.";
+  "Case editorial do Blog Waldemática em Next.js e MDX, com SEO técnico, conteúdo versionado, performance, comentários e publicação contínua.";
 
 export const metadata: Metadata = {
   title,
@@ -39,27 +39,27 @@ export const metadata: Metadata = {
 
 const editorialPillars = [
   {
-    title: "Arquitetura editorial",
+    title: "Conteúdo em MDX",
     description:
-      "Categorias, páginas e artigos organizados para facilitar navegação, descoberta e crescimento do acervo.",
+      "Artigos versionados em arquivos MDX, com estrutura editorial consistente e liberdade para evoluir o conteúdo sem depender de um CMS tradicional.",
     accent: "from-amber-300/20 to-orange-400/10",
   },
   {
-    title: "SEO on-page",
+    title: "SEO técnico",
     description:
-      "Hierarquia de títulos, links internos, descrições, estrutura semântica e organização voltadas à presença orgânica.",
+      "Canonical, metadata, schema, sitemap, redirects e preservação de URLs já indexadas fazem parte da arquitetura do projeto.",
     accent: "from-emerald-400/20 to-cyan-400/10",
   },
   {
     title: "Experiência de leitura",
     description:
-      "Layout limpo, responsivo e pensado para que o conteúdo seja confortável de consumir em qualquer tela.",
+      "Layout responsivo, páginas de artigos e categorias organizadas para facilitar leitura, descoberta e navegação em qualquer tela.",
     accent: "from-blue-400/20 to-indigo-400/10",
   },
   {
-    title: "Publicação contínua",
+    title: "Publicação versionada",
     description:
-      "Uma base WordPress preparada para receber novos artigos sem perder consistência visual ou organização.",
+      "GitHub e Vercel conectam criação, revisão e publicação em um fluxo rastreável, com histórico claro das alterações editoriais.",
     accent: "from-violet-400/20 to-fuchsia-400/10",
   },
 ];
@@ -67,45 +67,52 @@ const editorialPillars = [
 const articleMockups = [
   {
     title: "Conteúdo para vestibulares",
-    meta: "SEO + estrutura",
+    meta: "SEO + intenção de busca",
     accent: "bg-amber-300/70",
   },
   {
     title: "Artigos de Matemática",
-    meta: "Leitura + navegação",
+    meta: "MDX + leitura",
     accent: "bg-emerald-300/70",
   },
   {
     title: "Guias e materiais",
-    meta: "Conteúdo + descoberta",
+    meta: "Clusters + navegação",
     accent: "bg-blue-300/70",
   },
 ];
 
 const seoFlow = [
-  "Tema e intenção",
+  "Pauta e intenção",
   "Estrutura do artigo",
-  "Hierarquia de títulos",
+  "MDX + metadata",
   "Links internos",
-  "Otimização on-page",
-  "Publicação",
-  "Revisão e atualização",
+  "Imagens e ALT",
+  "Revisão",
+  "GitHub → Vercel",
 ];
 
 const stack = [
-  "WordPress",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "MDX",
+  "Supabase",
   "SEO",
-  "Gestão de Conteúdo",
-  "Elementor",
-  "HTML",
-  "CSS",
-  "Responsividade",
-  "Performance",
+  "Vercel",
 ];
 
 function ArrowLeftIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="M19 12H5" />
       <path d="m11 18-6-6 6-6" />
     </svg>
@@ -114,7 +121,14 @@ function ArrowLeftIcon() {
 
 function ArrowIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="M5 12h14" />
       <path d="m13 6 6 6-6 6" />
     </svg>
@@ -123,7 +137,14 @@ function ArrowIcon() {
 
 function ExternalIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       <path d="M15 3h6v6" />
       <path d="m10 14 11-11" />
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -177,10 +198,10 @@ export default function BlogWordpressSeoCasePage() {
                   Projeto real
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300">
-                  Conteúdo + SEO
+                  Next.js + MDX
                 </span>
                 <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-slate-300">
-                  WordPress editorial
+                  Conteúdo + SEO
                 </span>
               </div>
 
@@ -196,15 +217,15 @@ export default function BlogWordpressSeoCasePage() {
               </h1>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                O Blog Waldemática foi estruturado como um sistema editorial em
-                WordPress, com foco em organização de conteúdo, experiência de
-                leitura, SEO on-page, links internos e crescimento contínuo do
-                acervo.
+                O Blog Waldemática foi migrado para Next.js e MDX para unir
+                conteúdo editorial, SEO técnico, performance e publicação
+                versionada. O projeto preserva URLs importantes do acervo e
+                integra recursos de conta, comentários e leads com Supabase.
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="https://waldematica.com.br/blog/"
+                  href="https://blog.waldematica.com.br/"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-200 px-6 py-3.5 font-semibold text-[#17130b] shadow-lg shadow-amber-200/10 transition hover:bg-amber-100"
@@ -229,13 +250,13 @@ export default function BlogWordpressSeoCasePage() {
                   <span className="h-3 w-3 rounded-full bg-white/20" />
                   <span className="h-3 w-3 rounded-full bg-white/20" />
                   <div className="ml-3 flex-1 rounded-lg bg-white/5 px-3 py-2 text-center text-xs text-slate-500">
-                    waldematica.com.br/blog
+                    blog.waldematica.com.br
                   </div>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-[1.1fr_.9fr]">
                   <a
-                    href="https://waldematica.com.br/estatistica-no-enem/"
+                    href="https://blog.waldematica.com.br/"
                     target="_blank"
                     rel="noreferrer"
                     className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0f1216] transition hover:border-amber-200/35"
@@ -251,23 +272,25 @@ export default function BlogWordpressSeoCasePage() {
                       </div>
 
                       <h3 className="mt-4 text-lg font-semibold leading-7 text-white">
-                        Estatística no Enem: Domine Média, Mediana, Moda e Interpretação de Gráficos
+                        Estatística no ENEM: Domine Média, Mediana, Moda e Interpretação de Gráficos
                       </h3>
                     </div>
 
                     <div className="overflow-hidden border-y border-white/10 bg-black/20">
                       <img
                         src="/projetos/blog/estatistica-no-enem.jpg"
-                        alt="Imagem do artigo Estatística no Enem no Blog Waldemática"
+                        alt="Imagem do artigo Estatística no ENEM no Blog Waldemática"
                         className="block h-auto w-full object-contain transition duration-500 group-hover:scale-[1.015]"
                       />
                     </div>
 
                     <div className="flex items-center justify-between gap-4 p-5">
                       <div>
-                        <p className="text-xs text-slate-500">Conteúdo + SEO + experiência de leitura</p>
+                        <p className="text-xs text-slate-500">
+                          Conteúdo + MDX + SEO + experiência de leitura
+                        </p>
                         <p className="mt-1 text-sm font-medium text-slate-300">
-                          Ver artigo publicado
+                          Explorar o blog ao vivo
                         </p>
                       </div>
                       <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-amber-200 transition group-hover:bg-amber-200 group-hover:text-[#17130b]">
@@ -309,10 +332,9 @@ export default function BlogWordpressSeoCasePage() {
               </div>
 
               <p className="max-w-2xl text-base leading-7 text-slate-400">
-                O projeto foi pensado para que novos artigos entrem em uma
-                estrutura organizada, conectada por categorias, links internos e
-                páginas relacionadas. Isso melhora a navegação e evita que o
-                acervo cresça de forma desordenada.
+                O acervo cresce em uma arquitetura de artigos, categorias, links
+                internos, metadata e URLs consistentes. O conteúdo fica versionado
+                no repositório e pode evoluir sem perder o histórico editorial.
               </p>
             </div>
           </div>
@@ -349,104 +371,70 @@ export default function BlogWordpressSeoCasePage() {
         <section className="border-y border-white/10 bg-[#0d1014]">
           <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
-                Estrutura do conteúdo
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                Fluxo editorial
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Da descoberta do tema até a publicação.
+                Da pauta ao deploy com revisão e histórico.
               </h2>
               <p className="mt-5 max-w-xl leading-7 text-slate-400">
-                O fluxo editorial considera intenção do conteúdo, estrutura,
-                hierarquia, links internos e revisão. SEO entra no processo como
-                parte da organização, não como um “plugin mágico”.
+                O processo editorial separa criação, revisão e publicação. Cada
+                artigo pode ser revisado antes do commit e entra em produção pelo
+                fluxo GitHub → Vercel.
               </p>
             </div>
 
-            <div className="rounded-[2rem] border border-white/10 bg-[#111317] p-6">
-              <div className="space-y-4">
-                {seoFlow.map((step, index) => (
-                  <div
-                    key={step}
-                    className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.025] p-4"
-                  >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-200/10 text-sm font-semibold text-amber-200">
-                      {index + 1}
-                    </div>
-                    <div className="flex-1">
-                      <p className="font-medium">{step}</p>
-                    </div>
-                    {index < seoFlow.length - 1 ? (
-                      <div className="hidden sm:block h-px w-14 bg-gradient-to-r from-amber-200/70 to-transparent" />
-                    ) : null}
-                  </div>
-                ))}
-              </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {seoFlow.map((item, index) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-4 rounded-2xl border border-white/10 bg-[#111317] p-4"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-300/10 text-xs font-bold text-emerald-200">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm font-medium text-slate-300">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="mb-12 max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
-              Organização visual
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Artigos, categorias e leitura com funções diferentes.
-            </h2>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr]">
-            <div className="rounded-[2rem] border border-white/10 bg-[#111317] p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
-                Página de artigo
+          <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+                Migração e continuidade
               </p>
-              <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_260px]">
-                <div>
-                  <div className="h-3 w-4/5 rounded-full bg-white/20" />
-                  <div className="mt-3 h-3 w-3/5 rounded-full bg-white/12" />
-                  <div className="mt-6 h-56 rounded-2xl bg-gradient-to-br from-amber-200/8 via-emerald-300/4 to-blue-300/5" />
-                  <div className="mt-6 space-y-3">
-                    {[100, 94, 87, 96, 76].map((width) => (
-                      <div
-                        key={width}
-                        className="h-2 rounded-full bg-white/10"
-                        style={{ width: `${width}%` }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {["Relacionados", "Categorias", "Navegação"].map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-white/10 bg-[#0f1216] p-4"
-                    >
-                      <div className="h-1.5 w-10 rounded-full bg-emerald-300" />
-                      <p className="mt-4 font-semibold">{item}</p>
-                      <div className="mt-3 h-2 w-full rounded-full bg-white/10" />
-                      <div className="mt-2 h-2 w-3/4 rounded-full bg-white/10" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                WordPress ficou no histórico. As URLs importantes continuaram.
+              </h2>
+              <p className="mt-5 leading-7 text-slate-400">
+                A migração para Next.js não foi tratada como um recomeço do zero.
+                URLs já indexadas, redirects, canonical, sitemap e estrutura de
+                SEO foram preservados para reduzir impacto orgânico e manter a
+                continuidade do acervo.
+              </p>
             </div>
 
-            <div className="grid gap-5">
-              {[
-                ["Busca e descoberta", "A estrutura ajuda o visitante a encontrar conteúdos relacionados sem depender apenas do menu."],
-                ["Links internos", "Artigos são conectados entre si para criar contexto, continuidade de leitura e melhor organização."],
-                ["Categorias", "Temas são agrupados de forma coerente para evitar um acervo solto ou difícil de navegar."],
-              ].map(([title, text]) => (
-                <div
-                  key={title}
-                  className="rounded-3xl border border-white/10 bg-[#111317] p-6"
-                >
-                  <div className="mb-4 h-1.5 w-12 rounded-full bg-blue-300" />
-                  <h3 className="text-lg font-semibold">{title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{text}</p>
-                </div>
-              ))}
+            <div className="rounded-[2rem] border border-white/10 bg-[#111317] p-6 sm:p-8">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  ["MDX versionado", "Artigos ficam no repositório e acompanham o histórico do projeto."],
+                  ["URLs preservadas", "Slugs e redirects protegem o patrimônio já indexado."],
+                  ["Supabase", "Conta, comentários, preferências e leads vivem fora do conteúdo estático."],
+                  ["Vercel", "Deploy automático e infraestrutura alinhada ao restante do ecossistema Waldemática."],
+                ].map(([itemTitle, text]) => (
+                  <div
+                    key={itemTitle}
+                    className="rounded-2xl border border-white/10 bg-white/[0.025] p-4"
+                  >
+                    <div className="mb-3 h-1.5 w-10 rounded-full bg-blue-300" />
+                    <p className="font-semibold">{itemTitle}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -461,8 +449,8 @@ export default function BlogWordpressSeoCasePage() {
                 Ferramentas usadas no projeto
               </h2>
               <p className="mt-5 leading-7 text-slate-400">
-                A stack prioriza publicação prática, organização editorial,
-                leitura confortável e evolução contínua do blog.
+                A stack atual combina conteúdo versionado, aplicação web moderna,
+                serviços de backend e uma infraestrutura de publicação contínua.
               </p>
             </div>
 
@@ -485,36 +473,37 @@ export default function BlogWordpressSeoCasePage() {
               Resultado
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-              Uma base editorial preparada para continuar crescendo sem perder clareza.
+              Um projeto editorial moderno, versionado e preparado para crescer.
             </h2>
           </div>
 
           <div className="space-y-5 text-base leading-7 text-slate-400">
             <p>
-              O blog passou a concentrar uma biblioteca crescente de conteúdos em
-              uma estrutura integrada ao restante da presença digital da
-              Waldemática, mantendo consistência visual e organização editorial.
+              O Blog Waldemática deixou de depender de WordPress e plugins como
+              base operacional. Hoje conteúdo e aplicação evoluem em Next.js e
+              MDX, com deploy contínuo e controle direto da estrutura técnica.
             </p>
             <p>
-              A base em WordPress permite publicação contínua e ajustes
-              progressivos de SEO, navegação e apresentação sem interromper o
-              funcionamento do projeto.
+              A migração preservou o trabalho de SEO já acumulado e abriu espaço
+              para novas automações editoriais sem sacrificar revisão, URLs ou
+              consistência do projeto.
             </p>
           </div>
         </section>
 
         <section className="px-6 pb-24 lg:px-8">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-amber-300/20 bg-gradient-to-br from-[#17140e] via-[#111416] to-[#0e1514] p-8 sm:p-12 lg:p-16">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-amber-200/15 bg-gradient-to-br from-[#17140f] via-[#111317] to-[#0a0b0d] p-8 sm:p-12 lg:p-16">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-200">
-                WordPress + SEO
+                Next.js + MDX + SEO
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-                Precisa transformar conteúdo solto em uma estrutura editorial organizada?
+                Precisa de um projeto editorial rápido, organizado e indexável?
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Posso ajudar a organizar páginas, artigos e SEO on-page para
-                deixar o site mais claro, navegável e preparado para crescer.
+                Posso estruturar conteúdo, aplicação e SEO com uma base moderna,
+                responsiva e preparada para publicação contínua sem complexidade
+                desnecessária.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
