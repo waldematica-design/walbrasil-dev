@@ -45,25 +45,28 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://walbrasil.dev"),
 
   title: {
-    default: "Wal Brasil | Desenvolvimento Web, WordPress e IA",
+    default: "Wal Brasil | Sites, Sistemas Web e Inteligência Artificial",
     template: "%s | Wal Brasil",
   },
 
   description:
-    "Desenvolvimento de sites, landing pages, WordPress, SEO e soluções web com inteligência artificial. Conheça os projetos e serviços da Wal Brasil.",
+    "Desenvolvimento de sites, sistemas web, aplicações em Next.js, SEO e soluções com inteligência artificial. Conheça os projetos e serviços da Wal Brasil.",
 
   applicationName: "Wal Brasil",
 
   keywords: [
     "desenvolvimento web",
     "desenvolvedor web",
-    "WordPress",
-    "Elementor",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Supabase",
+    "sistemas web",
     "landing pages",
     "sites institucionais",
     "SEO",
-    "Next.js",
     "inteligência artificial",
+    "agentes de IA",
     "soluções com IA",
     "Wal Brasil",
   ],
@@ -77,9 +80,9 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://walbrasil.dev",
     siteName: "Wal Brasil",
-    title: "Wal Brasil | Desenvolvimento Web, WordPress e IA",
+    title: "Wal Brasil | Sites, Sistemas Web e Inteligência Artificial",
     description:
-      "Desenvolvimento de sites, landing pages, WordPress, SEO e soluções web com inteligência artificial.",
+      "Desenvolvimento de sites, sistemas web, Next.js, SEO e soluções com inteligência artificial.",
     images: [
       {
         url: "/branding/wal-brasil-logo.png",
