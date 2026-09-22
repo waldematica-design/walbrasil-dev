@@ -17,40 +17,40 @@ const WAL_DIRECT_WHATSAPP_URL =
 
 const services = [
   {
-    title: "WordPress & Elementor",
+    title: "Desenvolvimento Web",
     description:
-      "Sites profissionais, fáceis de administrar e preparados para o crescimento do seu negócio.",
-    icon: "W",
+      "Sites e aplicações modernas em Next.js, React e TypeScript, com foco em desempenho, organização e evolução do projeto.",
+    icon: "</>",
   },
   {
-    title: "Landing Pages",
+    title: "Sistemas Web",
     description:
-      "Páginas diretas, responsivas e pensadas para apresentar sua oferta e gerar contatos.",
-    icon: "L",
+      "Painéis, áreas restritas, fluxos administrativos e sistemas sob medida conectados a banco de dados e serviços externos.",
+    icon: "SYS",
+  },
+  {
+    title: "Agentes de IA",
+    description:
+      "Agentes, automações e integrações com inteligência artificial para atendimento, vendas e processos de negócio.",
+    icon: "AI",
   },
   {
     title: "Sites Institucionais",
     description:
-      "Presença digital clara e profissional para empresas, escolas, escritórios e prestadores de serviço.",
-    icon: "S",
+      "Presença digital clara, rápida e profissional para empresas, clínicas, escritórios e prestadores de serviço.",
+    icon: "WEB",
   },
   {
-    title: "SEO",
+    title: "Landing Pages",
     description:
-      "Estrutura, conteúdo e otimizações on-page para melhorar a organização e a presença do site no Google.",
+      "Páginas responsivas e orientadas à conversão para apresentar ofertas, campanhas, produtos e captar contatos.",
+    icon: "LP",
+  },
+  {
+    title: "SEO & Performance",
+    description:
+      "Estrutura técnica, conteúdo e otimizações para melhorar carregamento, experiência do usuário e presença no Google.",
     icon: "SEO",
-  },
-  {
-    title: "Desenvolvimento Web",
-    description:
-      "Interfaces modernas e aplicações web construídas com tecnologias atuais e foco em desempenho.",
-    icon: "</>",
-  },
-  {
-    title: "Soluções com IA",
-    description:
-      "Agentes, automações e integrações com inteligência artificial desenvolvidos em conexão com a TECÉRALE.",
-    icon: "AI",
   },
 ];
 
@@ -118,12 +118,14 @@ const projects = [
 ];
 
 const technologies = [
-  "WordPress",
-  "Elementor",
   "Next.js",
+  "React",
   "TypeScript",
   "Tailwind CSS",
   "Supabase",
+  "PostgreSQL",
+  "Vercel",
+  "GitHub",
   "SEO",
   "Inteligência Artificial",
 ];
@@ -247,7 +249,7 @@ export default function Home() {
           <div>
             <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-sm text-blue-200">
               <span className="h-2 w-2 rounded-full bg-cyan-300" />
-              Projetos web profissionais, claros e fáceis de manter
+              Projetos web e soluções de IA desenvolvidos para problemas reais
             </div>
 
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
@@ -255,17 +257,16 @@ export default function Home() {
             </p>
 
             <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
-              WordPress, Landing Pages, SEO e{" "}
+              Sites, Sistemas e{" "}
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                 Soluções Web com IA
               </span>
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              Desenvolvimento de sites e soluções digitais rápidas, responsivas e
-              organizadas para resolver problemas reais — sem complexidade
-              desnecessária e sem prender o cliente à manutenção técnica para
-              pequenas alterações.
+              Desenvolvimento de sites, sistemas e aplicações modernas com
+              Next.js, Supabase e Inteligência Artificial, do projeto inicial à
+              publicação.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -285,10 +286,10 @@ export default function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-400">
-              <span>✓ WordPress & Elementor</span>
-              <span>✓ Desenvolvimento moderno</span>
-              <span>✓ SEO e performance</span>
-              <span>✓ IA aplicada à web</span>
+              <span>✓ Next.js & React</span>
+              <span>✓ Sistemas Web</span>
+              <span>✓ Supabase</span>
+              <span>✓ Inteligência Artificial</span>
             </div>
           </div>
 
@@ -362,12 +363,12 @@ export default function Home() {
                 Serviços
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Do site institucional à solução web sob medida.
+                Do site institucional ao sistema web com IA.
               </h2>
               <p className="mt-4 text-slate-400">
-                O foco é entregar a solução adequada ao projeto, com boa
-                experiência no computador e no celular e estrutura simples de
-                manter.
+                Desenvolvimento moderno para transformar uma necessidade real em
+                um produto digital rápido, responsivo, organizado e pronto para
+                evoluir.
               </p>
             </div>
 
@@ -400,9 +401,9 @@ export default function Home() {
                 Trabalho real, não só promessa.
               </h2>
               <p className="mt-4 text-slate-400">
-                Projetos reais e demonstrativos que mostram desenvolvimento,
-                WordPress, SEO, organização de conteúdo, aplicações web e
-                integração com IA.
+                Projetos reais e demonstrativos que mostram desenvolvimento
+                moderno, sistemas web, SEO, organização de conteúdo e integração
+                com inteligência artificial.
               </p>
             </div>
             <a
@@ -542,14 +543,15 @@ export default function Home() {
                 Tecnologia tem que simplificar o negócio, não complicar.
               </h2>
               <p className="mt-5 max-w-xl leading-7 text-slate-400">
-                Cada projeto começa pela necessidade real do cliente. A escolha
-                da tecnologia vem depois. Quando WordPress resolve bem, uso
-                WordPress. Quando o projeto pede uma aplicação mais moderna,
-                trabalho com desenvolvimento web sob medida.
+                Cada projeto começa pela necessidade real do cliente. A partir
+                dela, estruturo a solução com tecnologias modernas, priorizando
+                Next.js, React, Supabase e integrações com inteligência artificial
+                quando elas realmente agregam valor.
               </p>
               <p className="mt-4 max-w-xl leading-7 text-slate-400">
                 O objetivo é entregar uma solução profissional, rápida,
-                organizada e que continue fazendo sentido depois da publicação.
+                organizada e preparada para crescer sem criar complexidade
+                técnica desnecessária.
               </p>
             </div>
 
@@ -683,7 +685,7 @@ export default function Home() {
               </div>
               <p>© 2026 Wal Brasil. Todos os direitos reservados.</p>
             </div>
-            <p>WordPress · Desenvolvimento Web · SEO · IA</p>
+            <p>Next.js · Sistemas Web · SEO · IA</p>
           </div>
         </footer>
       </div>
