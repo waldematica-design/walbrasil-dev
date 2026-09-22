@@ -68,6 +68,18 @@ const projects = [
     imageAlt: "Dashboard real da plataforma Waldemática IA",
   },
   {
+    eyebrow: "AGÊNCIA + IA + AUTOMAÇÕES",
+    title: "TECÉRALE",
+    description:
+      "Agência de tecnologia AI-first com site institucional, agentes de IA, automações, integrações e soluções digitais sob medida para empresas e profissionais.",
+    stack: ["Next.js", "TypeScript", "Agentes de IA", "Automação"],
+    href: TECERALE_URL,
+    accent: "from-cyan-400/20 via-blue-500/10 to-indigo-500/5",
+    type: "Projeto real",
+    image: "/branding/wal-brasil-logo.png",
+    imageAlt: "TECÉRALE — agentes de IA, automações e desenvolvimento web",
+  },
+  {
     eyebrow: "NEXT.JS + VENDAS",
     title: "Waldemática",
     description:
@@ -425,19 +437,52 @@ export default function Home() {
                   <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:28px_28px]" />
 
                   <div className="absolute inset-4 overflow-hidden rounded-2xl border border-white/10 bg-[#091625]">
-                    <Image
-                      src={project.image}
-                      alt={project.imageAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className={`transition duration-500 hover:scale-[1.02] ${
-                        project.title === "Brasil Cotrim Advocacia"
-                          ? "object-cover object-[center_22%]"
-                          : project.title === "Clínica Silva"
-                            ? "object-cover object-center"
-                            : "object-cover object-top"
-                      }`}
-                    />
+                    {project.title === "TECÉRALE" ? (
+                      <div className="absolute inset-0 overflow-hidden bg-[#061425]">
+                        <div className="absolute -left-10 -top-12 h-44 w-44 rounded-full bg-blue-500/25 blur-3xl" />
+                        <div className="absolute -bottom-16 right-0 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl" />
+                        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(56,189,248,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,.16)_1px,transparent_1px)] [background-size:32px_32px]" />
+
+                        <div className="absolute inset-x-6 bottom-6 top-16 flex items-center justify-between gap-6">
+                          <div className="max-w-[58%]">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                              Tecnologia AI-first
+                            </p>
+                            <p className="mt-2 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                              TECÉRALE
+                            </p>
+                            <p className="mt-2 text-xs leading-5 text-slate-300">
+                              Agentes de IA, automações e soluções digitais para negócios.
+                            </p>
+                          </div>
+
+                          <div className="grid w-[38%] grid-cols-2 gap-2">
+                            {["Agentes IA", "WhatsApp", "Automação", "Web"].map((item) => (
+                              <div
+                                key={item}
+                                className="flex min-h-14 items-center justify-center rounded-xl border border-cyan-300/15 bg-white/[0.055] px-2 text-center text-[10px] font-semibold text-cyan-100 backdrop-blur"
+                              >
+                                {item}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Image
+                        src={project.image}
+                        alt={project.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className={`transition duration-500 hover:scale-[1.02] ${
+                          project.title === "Brasil Cotrim Advocacia"
+                            ? "object-cover object-[center_22%]"
+                            : project.title === "Clínica Silva"
+                              ? "object-cover object-center"
+                              : "object-cover object-top"
+                        }`}
+                      />
+                    )}
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/85 via-transparent to-[#07111f]/10" />
 
@@ -471,9 +516,15 @@ export default function Home() {
 
                   <a
                     href={project.href}
+                    target={project.href.startsWith("http") ? "_blank" : undefined}
+                    rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-blue-200"
                   >
-                    {project.type === "Projeto demonstrativo" ? "Ver demonstração" : "Ver projeto"}
+                    {project.href.startsWith("http")
+                      ? "Visitar site"
+                      : project.type === "Projeto demonstrativo"
+                        ? "Ver demonstração"
+                        : "Ver projeto"}
                     <ExternalIcon />
                   </a>
                 </div>
