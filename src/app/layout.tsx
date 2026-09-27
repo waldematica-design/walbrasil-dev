@@ -95,9 +95,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary",
-    title: "Wal Brasil | Desenvolvimento Web, WordPress e IA",
+    title: "Wal Brasil | Sites, Sistemas Web e Inteligência Artificial",
     description:
-      "Desenvolvimento de sites, landing pages, WordPress, SEO e soluções web com inteligência artificial.",
+      "Desenvolvimento de sites, sistemas web, aplicações em Next.js, SEO e soluções com inteligência artificial.",
     images: ["/branding/wal-brasil-logo.png"],
   },
 

@@ -11,48 +11,79 @@ export const metadata: Metadata = {
 
 const TECERALE_URL = "https://tecerale.com.br";
 const TECERALE_WHATSAPP_URL =
-  "https://wa.me/5517996535988?text=Ol%C3%A1%21%20Vim%20pelo%20portf%C3%B3lio%20walbrasil.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.";
+  "https://wa.me/5517996535988?text=Ol%C3%A1%21%20Vim%20pelo%20portf%C3%B3lio%20walbrasil.dev%20e%20gostaria%20de%20conhecer%20a%20TEC%C3%89RALE.";
+const WAL_DIRECT_WHATSAPP_NUMBER = "5517996802980";
 const WAL_DIRECT_WHATSAPP_URL =
-  "https://wa.me/5519982704544?text=Ol%C3%A1%2C%20Wal.%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20diretamente%20com%20voc%C3%AA.";
+  "https://wa.me/5517996802980?text=Ol%C3%A1%2C%20Wal.%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20diretamente%20com%20voc%C3%AA.";
+const WAL_EMAIL = "contato@walbrasil.dev";
 
-const services = [
+const commercialServices = [
   {
-    title: "Desenvolvimento Web",
+    title: "Landing page profissional",
     description:
-      "Sites e aplicações modernas em Next.js, React e TypeScript, com foco em desempenho, organização e evolução do projeto.",
-    icon: "</>",
+      "Página de alta conversão para apresentar uma oferta, captar contatos e levar o visitante direto para a ação certa.",
+    price: "R$ 500",
+    image: "/images/servicos/servico-landing-page-profissional.webp",
+    imageAlt: "Landing page profissional, moderna, responsiva e rápida",
+    tags: ["Conversão", "WhatsApp", "Responsivo", "Performance"],
   },
   {
-    title: "Sistemas Web",
+    title: "Site institucional moderno",
     description:
-      "Painéis, áreas restritas, fluxos administrativos e sistemas sob medida conectados a banco de dados e serviços externos.",
-    icon: "SYS",
+      "Presença digital profissional para empresas e especialistas, com até 5 páginas, responsividade, SEO básico e publicação.",
+    price: "R$ 900",
+    image: "/images/servicos/servico-site-institucional.webp",
+    imageAlt: "Site institucional moderno para empresas e profissionais",
+    tags: ["Até 5 páginas", "Responsivo", "SEO básico", "Publicação"],
   },
   {
-    title: "Agentes de IA",
+    title: "Sistema web / MVP",
     description:
-      "Agentes, automações e integrações com inteligência artificial para atendimento, vendas e processos de negócio.",
-    icon: "AI",
+      "Transforme uma ideia ou processo interno em uma aplicação funcional com login, banco de dados e painel administrativo.",
+    price: "R$ 1.600",
+    image: "/images/servicos/servico-mvp-sistema-web.webp",
+    imageAlt: "Sistema web MVP com login e painel administrativo",
+    tags: ["Login", "Painel administrativo", "Banco de dados", "Até 3 módulos"],
   },
   {
-    title: "Sites Institucionais",
+    title: "Blog profissional com painel",
     description:
-      "Presença digital clara, rápida e profissional para empresas, clínicas, escritórios e prestadores de serviço.",
-    icon: "WEB",
+      "Blog moderno e otimizado para SEO, com painel administrativo para publicar artigos, organizar categorias e enviar imagens.",
+    price: "R$ 850",
+    image: "/images/servicos/servico-blog-profissional-seo.webp",
+    imageAlt: "Blog profissional com painel para publicação de artigos",
+    tags: ["Painel de artigos", "Upload de imagens", "SEO", "Categorias"],
   },
   {
-    title: "Landing Pages",
+    title: "Site para clínica com IA e agendamento",
     description:
-      "Páginas responsivas e orientadas à conversão para apresentar ofertas, campanhas, produtos e captar contatos.",
-    icon: "LP",
+      "Site premium para clínica ou consultório com atendimento inteligente, dúvidas frequentes e agendamento pelo site ou WhatsApp.",
+    price: "R$ 1.400",
+    image: "/images/servicos/servico-site-clinica-agendamento-ia.webp",
+    imageAlt: "Site para clínica com agendamento online, WhatsApp e inteligência artificial",
+    tags: ["Site profissional", "IA no site", "WhatsApp", "Agenda online"],
   },
   {
-    title: "SEO & Performance",
+    title: "Agente de IA para atendimento e agendamento",
     description:
-      "Estrutura técnica, conteúdo e otimizações para melhorar carregamento, experiência do usuário e presença no Google.",
-    icon: "SEO",
+      "Atenda clientes, responda dúvidas, apresente serviços e organize agendamentos com um agente configurado para as regras do negócio.",
+    price: "R$ 1.000",
+    image: "/images/servicos/servico-agente-ia-atendimento-agendamento.webp",
+    imageAlt: "Agente de IA para atendimento, vendas e agendamento",
+    tags: ["Atendimento 24/7", "WhatsApp", "Agendamento", "Respostas inteligentes"],
   },
 ];
+
+function buildServiceWhatsAppUrl(serviceTitle: string) {
+  const message = `Olá, Wal! Vi o serviço "${serviceTitle}" no walbrasil.dev e gostaria de conversar sobre meu projeto.`;
+  return `https://wa.me/${WAL_DIRECT_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+function buildServiceEmailUrl(serviceTitle: string) {
+  const subject = `Projeto — ${serviceTitle}`;
+  const body = `Olá, Wal!\n\nVi o serviço "${serviceTitle}" no walbrasil.dev e gostaria de conversar sobre meu projeto.`;
+  return `mailto:${WAL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 const projects = [
   {
@@ -366,42 +397,180 @@ export default function Home() {
           </div>
         </section>
 
-        <SolutionSelector />
-
-        <section id="servicos" className="border-y border-white/10 bg-white/[0.02]">
+        <section
+          id="servicos"
+          className="border-y border-white/10 bg-white/[0.02]"
+        >
           <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
-                Serviços
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Do site institucional ao sistema web com IA.
-              </h2>
-              <p className="mt-4 text-slate-400">
-                Desenvolvimento moderno para transformar uma necessidade real em
-                um produto digital rápido, responsivo, organizado e pronto para
-                evoluir.
-              </p>
+            <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+                  Serviços com escopo inicial claro
+                </p>
+                <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                  Soluções que podemos colocar no ar para você.
+                </h2>
+              </div>
+              <div className="lg:border-l lg:border-white/10 lg:pl-8">
+                <p className="leading-7 text-slate-300">
+                  Projetos modernos, preços de entrada acessíveis e espaço para a
+                  solução crescer somente quando você realmente precisar.
+                </p>
+                <p className="mt-3 text-xs leading-5 text-slate-500">
+                  Valores a partir do pacote inicial. Recursos adicionais recebem
+                  orçamento personalizado.
+                </p>
+              </div>
             </div>
 
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => (
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {commercialServices.slice(0, 3).map((service, index) => (
                 <article
                   key={service.title}
-                  className="group rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition hover:-translate-y-1 hover:border-blue-400/30 hover:bg-white/[0.055]"
+                  className="group flex min-h-full flex-col overflow-hidden rounded-3xl border border-blue-400/20 bg-[#081421] shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-blue-300/40"
                 >
-                  <div className="mb-5 flex h-11 min-w-11 w-fit items-center justify-center rounded-xl bg-blue-500/10 px-3 text-sm font-bold text-blue-300">
-                    {service.icon}
+                  <div className="relative h-[220px] overflow-hidden border-b border-white/10 bg-[#06101c] sm:h-[280px] lg:h-[220px]">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      quality={75}
+                      loading="eager"
+                      className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#081421]/35 via-transparent to-transparent" />
                   </div>
-                  <h3 className="text-lg font-semibold">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">
-                    {service.description}
-                  </p>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-xl font-semibold tracking-tight text-white">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                      {service.description}
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {service.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-lg border border-blue-300/15 bg-blue-400/[0.06] px-2.5 py-1.5 text-[11px] text-blue-100/80"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-8">
+                      <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+                        <span className="text-xs text-slate-500">A partir de</span>
+                        <strong className="text-2xl font-bold tracking-tight text-white">
+                          {service.price}
+                        </strong>
+                      </div>
+
+                      <div className="mt-5 grid grid-cols-2 gap-2">
+                        <TrackedLink
+                          href={buildServiceWhatsAppUrl(service.title)}
+                          eventName="whatsapp_click"
+                          ctaLocation={`service_${index + 1}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-500 px-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+                        >
+                          WhatsApp
+                        </TrackedLink>
+                        <a
+                          href={buildServiceEmailUrl(service.title)}
+                          className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.035] px-3 text-sm font-semibold text-white transition hover:bg-white/[0.07]"
+                        >
+                          E-mail
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-14 flex items-center gap-4">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                Outros projetos que também entrego
+              </span>
+              <div className="h-px flex-1 bg-white/10" />
+            </div>
+
+            <div className="mt-6 grid gap-5 lg:grid-cols-3">
+              {commercialServices.slice(3).map((service, index) => (
+                <article
+                  key={service.title}
+                  className="group flex min-h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] transition hover:-translate-y-1 hover:border-blue-400/25 hover:bg-white/[0.04]"
+                >
+                  <div className="relative h-[220px] overflow-hidden border-b border-white/10 bg-[#06101c] sm:h-[280px] lg:h-[220px]">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      quality={75}
+                      className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                    />
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                      {service.description}
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {service.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-lg border border-white/10 bg-white/[0.035] px-2.5 py-1.5 text-[11px] text-slate-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto pt-8">
+                      <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-5">
+                        <span className="text-xs text-slate-500">A partir de</span>
+                        <strong className="text-2xl font-bold tracking-tight text-white">
+                          {service.price}
+                        </strong>
+                      </div>
+
+                      <div className="mt-5 grid grid-cols-2 gap-2">
+                        <TrackedLink
+                          href={buildServiceWhatsAppUrl(service.title)}
+                          eventName="whatsapp_click"
+                          ctaLocation={`service_${index + 4}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-500 px-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+                        >
+                          WhatsApp
+                        </TrackedLink>
+                        <a
+                          href={buildServiceEmailUrl(service.title)}
+                          className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.035] px-3 text-sm font-semibold text-white transition hover:bg-white/[0.07]"
+                        >
+                          E-mail
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
         </section>
+
+        <SolutionSelector />
 
         <section id="projetos" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -660,22 +829,30 @@ export default function Home() {
                 Tem um projeto em mente?
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Você pode conhecer meus trabalhos aqui no portfólio e conversar
-                com a TECÉRALE para transformar a ideia em um projeto real.
+                Fale diretamente comigo pelo WhatsApp ou por e-mail. Se o projeto
+                envolver agentes de IA e automações comerciais, a TECÉRALE também
+                faz parte do ecossistema.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <TrackedLink
-                  href={TECERALE_WHATSAPP_URL}
+                  href={WAL_DIRECT_WHATSAPP_URL}
                   eventName="whatsapp_click"
-                  ctaLocation="contact_tecerale"
+                  ctaLocation="contact_wal"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 font-semibold text-white transition hover:bg-emerald-400"
                 >
-                  Conversar com a TECÉRALE
+                  Falar diretamente com Wal
                   <ExternalIcon />
                 </TrackedLink>
+
+                <a
+                  href={`mailto:${WAL_EMAIL}?subject=${encodeURIComponent("Projeto pelo walbrasil.dev")}`}
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3.5 font-semibold text-[#07111f] transition hover:bg-blue-50"
+                >
+                  Enviar e-mail
+                </a>
 
                 <TrackedLink
                   href={TECERALE_URL}
@@ -683,23 +860,14 @@ export default function Home() {
                   ctaLocation="contact_tecerale"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-[#07111f] transition hover:bg-blue-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Conhecer a TECÉRALE
                   <ExternalIcon />
                 </TrackedLink>
-
-                <a
-                  href="#projetos"
-                  className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
-                >
-                  Ver projetos
-                </a>
               </div>
 
               <div className="mt-6 flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-                <span>Comercial automatizado: (17) 99653-5988</span>
-                <span className="hidden text-slate-600 sm:inline">•</span>
                 <TrackedLink
                   href={WAL_DIRECT_WHATSAPP_URL}
                   eventName="whatsapp_click"
@@ -708,15 +876,17 @@ export default function Home() {
                   rel="noreferrer"
                   className="transition hover:text-white"
                 >
-                  Contato direto com Wal: (19) 98270-4544
+                  WhatsApp direto: (17) 99680-2980
                 </TrackedLink>
                 <span className="hidden text-slate-600 sm:inline">•</span>
                 <a
-                  href="mailto:contato@walbrasil.dev"
+                  href={`mailto:${WAL_EMAIL}`}
                   className="transition hover:text-white"
                 >
-                  contato@walbrasil.dev
+                  {WAL_EMAIL}
                 </a>
+                <span className="hidden text-slate-600 sm:inline">•</span>
+                <span>Agente comercial TECÉRALE: (17) 99653-5988</span>
               </div>
             </div>
           </div>
