@@ -1,7 +1,11 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import TrackedLink from "@/components/TrackedLink";
+import { QuoteProvider } from "@/components/quote-provider";
+import { QuoteTrigger } from "@/components/quote-trigger";
+import PageMotion from "@/components/page-motion";
 import SolutionSelector from "./SolutionSelector";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   alternates: {
@@ -79,11 +83,28 @@ function buildServiceWhatsAppUrl(serviceTitle: string) {
   return `https://wa.me/${WAL_DIRECT_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-function buildServiceEmailUrl(serviceTitle: string) {
-  const subject = `Projeto — ${serviceTitle}`;
-  const body = `Olá, Wal!\n\nVi o serviço "${serviceTitle}" no walbrasil.dev e gostaria de conversar sobre meu projeto.`;
-  return `mailto:${WAL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+
+const heroTickerTop = [
+  "Landing Pages",
+  "Sites Institucionais",
+  "Sistemas Web / MVP",
+  "Blogs com Painel",
+  "Agentes de IA",
+  "Next.js",
+  "Supabase",
+  "Integrações",
+];
+
+const heroTickerBottom = [
+  "Automação",
+  "WhatsApp",
+  "Dashboards",
+  "SEO",
+  "APIs",
+  "Performance",
+  "Responsivo",
+  "IA Aplicada",
+];
 
 const projects = [
   {
@@ -223,17 +244,20 @@ function ExternalIcon() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#07111f] text-white antialiased">
-      <div className="fixed inset-0 -z-0 overflow-hidden pointer-events-none">
-        <div className="absolute left-[-10%] top-[-10%] h-[480px] w-[480px] rounded-full bg-blue-600/15 blur-[120px]" />
-        <div className="absolute right-[-10%] top-[18%] h-[420px] w-[420px] rounded-full bg-cyan-400/10 blur-[130px]" />
-      </div>
+    <QuoteProvider>
+      <main className={`${styles.motionRoot} min-h-screen bg-[#0b0d12] text-white antialiased`}>
+        <PageMotion />
+        <div className="fixed inset-0 -z-0 overflow-hidden pointer-events-none">
+          <div className={`${styles.ambientOrb} ${styles.ambientOrbOne} absolute left-[-10%] top-[-10%] h-[480px] w-[480px] rounded-full bg-emerald-500/10 blur-[120px]`} />
+          <div className={`${styles.ambientOrb} ${styles.ambientOrbTwo} absolute right-[-10%] top-[18%] h-[420px] w-[420px] rounded-full bg-amber-400/8 blur-[130px]`} />
+          <div className={styles.ambientGrid} />
+        </div>
 
       <div className="relative z-10">
-        <header className="sticky top-0 z-50 border-b border-white/10 bg-[#07111f]/80 backdrop-blur-xl">
+        <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b0d12]/80 backdrop-blur-xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
             <a href="#inicio" className="flex items-center gap-3">
-              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full shadow-lg shadow-blue-500/20">
+              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full shadow-lg shadow-emerald-500/15">
                 <Image
                   src="/branding/wal-brasil-logo.png"
                   alt="Logo Wal Brasil"
@@ -271,16 +295,15 @@ export default function Home() {
                 ctaLocation="header_tecerale"
                 target="_blank"
                 rel="noreferrer"
-                className="text-xs font-semibold tracking-wide text-blue-300 transition hover:text-white sm:text-sm"
+                className="text-xs font-semibold tracking-wide text-emerald-300 transition hover:text-white sm:text-sm"
               >
                 TECÉRALE ↗
               </TrackedLink>
-              <a
-                href="#contato"
+              <QuoteTrigger
                 className="hidden rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-[#07111f] transition hover:bg-blue-50 sm:inline-flex"
               >
                 Solicitar orçamento
-              </a>
+              </QuoteTrigger>
             </div>
           </div>
         </header>
@@ -289,19 +312,19 @@ export default function Home() {
           id="inicio"
           className="mx-auto grid min-h-[calc(100vh-73px)] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.1fr_.9fr] lg:px-8"
         >
-          <div>
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-sm text-blue-200">
-              <span className="h-2 w-2 rounded-full bg-cyan-300" />
+          <div data-reveal data-direction="left">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/8 px-4 py-2 text-sm text-emerald-100">
+              <span className="h-2 w-2 rounded-full bg-emerald-300" />
               Projetos web e soluções de IA desenvolvidos para problemas reais
             </div>
 
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-emerald-300">
               Wal Brasil · Fundador e Desenvolvedor da TECÉRALE
             </p>
 
             <h1 className="max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
               Sites, Sistemas e{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-slate-100 via-emerald-300 to-teal-300 bg-clip-text text-transparent">
                 Soluções Web com IA
               </span>
             </h1>
@@ -315,17 +338,16 @@ export default function Home() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#projetos"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-6 py-3.5 font-semibold shadow-lg shadow-blue-500/20 transition hover:bg-blue-400"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 font-semibold shadow-lg shadow-emerald-500/15 transition hover:bg-emerald-400"
               >
                 Ver projetos
                 <ArrowIcon />
               </a>
-              <a
-                href="#contato"
+              <QuoteTrigger
                 className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
               >
                 Falar sobre um projeto
-              </a>
+              </QuoteTrigger>
             </div>
 
             <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-400">
@@ -336,63 +358,104 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-xl">
-            <div className="absolute -inset-4 rounded-[2rem] bg-blue-500/10 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/30 backdrop-blur">
-              <div className="mb-4 flex items-center gap-2 border-b border-white/10 pb-4">
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <span className="h-3 w-3 rounded-full bg-white/20" />
-                <div className="ml-3 flex-1 rounded-lg bg-white/5 px-3 py-2 text-center text-xs text-slate-500">
-                  walbrasil.dev
+          <div
+            className={`${styles.heroMockup} relative mx-auto w-full max-w-xl`}
+            data-reveal
+            data-direction="right"
+            data-delay="120"
+          >
+            <div className={styles.featuredProjectGlow} />
+            <article className={styles.featuredProjectCard}>
+              <div className={styles.featuredProjectTopbar}>
+                <div className={styles.featuredProjectDots} aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <span>walbrasil.dev · case real</span>
+              </div>
+
+              <div className={styles.featuredProjectVisual}>
+                <Image
+                  src="/projetos/waldematica-ia/dashboard-aluno.jpg"
+                  alt="Dashboard real da plataforma Waldemática IA"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  quality={75}
+                  className={styles.featuredProjectImage}
+                />
+                <div className={styles.featuredProjectVisualShade} />
+
+                <div className={styles.featuredProjectBadge}>
+                  <span>PROJETO EM DESTAQUE</span>
+                  <strong>Waldemática IA</strong>
+                  <small>Plataforma educacional com IA, gestão e trilhas adaptativas.</small>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-blue-400/10 bg-[#0a1728] p-7">
-                <div className="mb-7 flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-blue-300">
-                      Projeto em destaque
-                    </p>
-                    <h2 className="mt-2 text-2xl font-bold">Waldemática IA</h2>
-                  </div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/15 text-lg font-bold text-blue-300">
-                    AI
-                  </div>
+              <div className={styles.featuredProjectFooter}>
+                <div>
+                  <span>STACK</span>
+                  <strong>Next.js · Supabase · IA</strong>
                 </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    ["Dashboard", "Progresso do aluno"],
-                    ["Tutor IA", "Assistência integrada"],
-                    ["Avaliações", "Domínio e revisão"],
-                    ["Admin", "Gestão da plataforma"],
-                  ].map(([title, text]) => (
-                    <div
-                      key={title}
-                      className="rounded-xl border border-white/10 bg-white/[0.035] p-4"
-                    >
-                      <div className="mb-3 h-1.5 w-10 rounded-full bg-blue-400" />
-                      <p className="font-semibold">{title}</p>
-                      <p className="mt-1 text-xs leading-5 text-slate-400">{text}</p>
-                    </div>
-                  ))}
+                <div>
+                  <span>ESCOPO</span>
+                  <strong>SaaS / LMS</strong>
                 </div>
-
-                <div className="mt-5 rounded-xl border border-cyan-300/10 bg-gradient-to-r from-blue-500/10 to-cyan-400/5 p-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs text-slate-400">Stack principal</p>
-                      <p className="mt-1 text-sm font-medium">
-                        Next.js · Supabase · Inteligência Artificial
-                      </p>
-                    </div>
-                    <span className="rounded-lg bg-white/5 px-3 py-2 text-xs text-cyan-200">
-                      Projeto real
-                    </span>
-                  </div>
+                <div>
+                  <span>STATUS</span>
+                  <strong className={styles.featuredProjectStatus}>Projeto real</strong>
                 </div>
               </div>
+            </article>
+          </div>
+
+          <div
+            className={styles.heroTickerWrap}
+            aria-label="Tecnologias e soluções que fazem parte dos projetos"
+            data-reveal
+            data-delay="180"
+          >
+            <div className={styles.heroTickerFade}>
+              <div className={`${styles.heroTickerTrack} ${styles.heroTickerTrackLeft}`}>
+                {[0, 1].map((copy) => (
+                  <div className={styles.heroTickerSet} aria-hidden={copy === 1} key={copy}>
+                    {heroTickerTop.map((item, index) => (
+                      <span
+                        className={styles.heroTickerChip}
+                        key={`${copy}-${item}`}
+                      >
+                        <i />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.heroTickerFade}>
+              <div className={`${styles.heroTickerTrack} ${styles.heroTickerTrackRight}`}>
+                {[0, 1].map((copy) => (
+                  <div className={styles.heroTickerSet} aria-hidden={copy === 1} key={copy}>
+                    {heroTickerBottom.map((item, index) => (
+                      <span
+                        className={styles.heroTickerChip}
+                        key={`${copy}-${item}`}
+                      >
+                        <i />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.heroTickerCaption}>
+              <span />
+              <p>TECNOLOGIA EM MOVIMENTO · PROJETOS PENSADOS PARA CRESCER</p>
+              <span />
             </div>
           </div>
         </section>
@@ -402,9 +465,9 @@ export default function Home() {
           className="border-y border-white/10 bg-white/[0.02]"
         >
           <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-end" data-reveal>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                   Serviços com escopo inicial claro
                 </p>
                 <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -427,9 +490,11 @@ export default function Home() {
               {commercialServices.slice(0, 3).map((service, index) => (
                 <article
                   key={service.title}
-                  className="group flex min-h-full flex-col overflow-hidden rounded-3xl border border-blue-400/20 bg-[#081421] shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-blue-300/40"
+                  className="service-card-motion group flex min-h-full flex-col overflow-hidden rounded-3xl border border-emerald-300/20 bg-[#081421] shadow-2xl shadow-black/10 transition hover:-translate-y-1 hover:border-emerald-300/30"
+                  data-reveal
+                  data-delay={index * 80}
                 >
-                  <div className="relative h-[220px] overflow-hidden border-b border-white/10 bg-[#06101c] sm:h-[280px] lg:h-[220px]">
+                  <div className="relative h-[220px] overflow-hidden border-b border-white/10 bg-[#0d1117] sm:h-[280px] lg:h-[220px]">
                     <Image
                       src={service.image}
                       alt={service.imageAlt}
@@ -439,7 +504,7 @@ export default function Home() {
                       loading="eager"
                       className="object-cover transition duration-500 group-hover:scale-[1.02]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#081421]/35 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#11151b]/40 via-transparent to-transparent" />
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">
@@ -454,7 +519,7 @@ export default function Home() {
                       {service.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-lg border border-blue-300/15 bg-blue-400/[0.06] px-2.5 py-1.5 text-[11px] text-blue-100/80"
+                          className="rounded-lg border border-emerald-300/15 bg-emerald-300/[0.05] px-2.5 py-1.5 text-[11px] text-emerald-100/75"
                         >
                           {tag}
                         </span>
@@ -480,12 +545,12 @@ export default function Home() {
                         >
                           WhatsApp
                         </TrackedLink>
-                        <a
-                          href={buildServiceEmailUrl(service.title)}
+                        <QuoteTrigger
+                          projectType={service.title}
                           className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.035] px-3 text-sm font-semibold text-white transition hover:bg-white/[0.07]"
                         >
-                          E-mail
-                        </a>
+                          Orçamento
+                        </QuoteTrigger>
                       </div>
                     </div>
                   </div>
@@ -504,9 +569,11 @@ export default function Home() {
               {commercialServices.slice(3).map((service, index) => (
                 <article
                   key={service.title}
-                  className="group flex min-h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] transition hover:-translate-y-1 hover:border-blue-400/25 hover:bg-white/[0.04]"
+                  className="service-card-motion group flex min-h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.025] transition hover:-translate-y-1 hover:border-amber-300/25 hover:bg-white/[0.04]"
+                  data-reveal
+                  data-delay={index * 80}
                 >
-                  <div className="relative h-[220px] overflow-hidden border-b border-white/10 bg-[#06101c] sm:h-[280px] lg:h-[220px]">
+                  <div className="relative h-[220px] overflow-hidden border-b border-white/10 bg-[#0d1117] sm:h-[280px] lg:h-[220px]">
                     <Image
                       src={service.image}
                       alt={service.imageAlt}
@@ -555,12 +622,12 @@ export default function Home() {
                         >
                           WhatsApp
                         </TrackedLink>
-                        <a
-                          href={buildServiceEmailUrl(service.title)}
+                        <QuoteTrigger
+                          projectType={service.title}
                           className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.035] px-3 text-sm font-semibold text-white transition hover:bg-white/[0.07]"
                         >
-                          E-mail
-                        </a>
+                          Orçamento
+                        </QuoteTrigger>
                       </div>
                     </div>
                   </div>
@@ -573,9 +640,9 @@ export default function Home() {
         <SolutionSelector />
 
         <section id="projetos" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 Projetos em destaque
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -587,20 +654,21 @@ export default function Home() {
                 com inteligência artificial.
               </p>
             </div>
-            <a
-              href="#contato"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-blue-200"
+            <QuoteTrigger
+              className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-emerald-100"
             >
               Precisa de algo parecido?
               <ArrowIcon />
-            </a>
+            </QuoteTrigger>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <article
                 key={project.title}
-                className="overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035]"
+                className="project-card-motion overflow-hidden rounded-3xl border border-white/10 bg-white/[0.035]"
+                data-reveal
+                data-delay={(index % 2) * 90}
               >
                 <div className={`relative h-56 overflow-hidden bg-gradient-to-br ${project.accent}`}>
                   <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:28px_28px]" />
@@ -608,7 +676,7 @@ export default function Home() {
                   <div className="absolute inset-4 overflow-hidden rounded-2xl border border-white/10 bg-[#091625]">
                     {project.title === "TECÉRALE" ? (
                       <div className="absolute inset-0 overflow-hidden bg-[#061425]">
-                        <div className="absolute -left-10 -top-12 h-44 w-44 rounded-full bg-blue-500/25 blur-3xl" />
+                        <div className="absolute -left-10 -top-12 h-44 w-44 rounded-full bg-emerald-500/25 blur-3xl" />
                         <div className="absolute -bottom-16 right-0 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl" />
                         <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(56,189,248,.16)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,.16)_1px,transparent_1px)] [background-size:32px_32px]" />
 
@@ -656,10 +724,10 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#07111f]/85 via-transparent to-[#07111f]/10" />
 
                     <div className="absolute left-4 right-4 top-4 flex items-start justify-between gap-4">
-                      <span className="rounded-full border border-white/10 bg-[#07111f]/75 px-3 py-1.5 text-[10px] font-semibold tracking-[0.14em] text-blue-200 backdrop-blur">
+                      <span className="rounded-full border border-white/10 bg-[#0b0d12]/75 px-3 py-1.5 text-[10px] font-semibold tracking-[0.14em] text-emerald-100 backdrop-blur">
                         {project.eyebrow}
                       </span>
-                      <span className="rounded-full border border-white/10 bg-[#07111f]/75 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-slate-200 backdrop-blur">
+                      <span className="rounded-full border border-white/10 bg-[#0b0d12]/75 px-3 py-1.5 text-[10px] uppercase tracking-[0.12em] text-slate-200 backdrop-blur">
                         {project.type}
                       </span>
                     </div>
@@ -687,7 +755,7 @@ export default function Home() {
                     href={project.href}
                     target={project.href.startsWith("http") ? "_blank" : undefined}
                     rel={project.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:text-blue-200"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-emerald-100"
                   >
                     {project.href.startsWith("http")
                       ? "Visitar site"
@@ -704,10 +772,10 @@ export default function Home() {
 
         <section className="border-y border-white/10 bg-white/[0.02]">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-            <div className="relative overflow-hidden rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/10 via-white/[0.035] to-cyan-400/5 p-7 sm:p-10">
-              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
-              <div className="relative max-w-4xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+            <div className="relative overflow-hidden rounded-3xl border border-emerald-300/20 bg-gradient-to-br from-blue-500/10 via-white/[0.035] to-cyan-400/5 p-7 sm:p-10">
+              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-emerald-500/10 blur-3xl" />
+              <div className="relative max-w-4xl" data-reveal>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                   Agência / TECÉRALE
                 </p>
                 <h2 className="mt-3 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
@@ -731,7 +799,7 @@ export default function Home() {
                     ctaLocation="agency_tecerale"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-6 py-3.5 font-semibold text-white transition hover:bg-blue-400"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 font-semibold text-white transition hover:bg-emerald-400"
                   >
                     Conhecer a TECÉRALE
                     <ExternalIcon />
@@ -754,9 +822,9 @@ export default function Home() {
         </section>
 
         <section id="sobre" className="border-y border-white/10 bg-white/[0.02]">
-          <div className="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-2 lg:px-8">
+          <div className="mx-auto grid max-w-7xl gap-14 px-6 py-24 lg:grid-cols-2 lg:px-8" data-reveal>
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 Como eu trabalho
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -786,7 +854,7 @@ export default function Home() {
                   key={title}
                   className="rounded-2xl border border-white/10 bg-white/[0.035] p-5"
                 >
-                  <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-blue-500/10 text-blue-300">
+                  <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300">
                     <CheckIcon />
                   </div>
                   <h3 className="font-semibold">{title}</h3>
@@ -798,8 +866,8 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+          <div className="text-center" data-reveal>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
               Tecnologias
             </p>
             <h2 className="mt-3 text-3xl font-bold">
@@ -820,9 +888,9 @@ export default function Home() {
         </section>
 
         <section id="contato" className="px-6 pb-24 lg:px-8">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-blue-400/20 bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-cyan-400/5 p-8 sm:p-12 lg:p-16">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
+          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-emerald-300/20 bg-gradient-to-br from-blue-600/20 via-blue-500/10 to-cyan-400/5 p-8 sm:p-12 lg:p-16">
+            <div className="max-w-3xl" data-reveal>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 Vamos conversar
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
@@ -835,6 +903,13 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <QuoteTrigger
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 font-semibold text-white transition hover:bg-emerald-400"
+                >
+                  Solicitar orçamento
+                  <ArrowIcon />
+                </QuoteTrigger>
+
                 <TrackedLink
                   href={WAL_DIRECT_WHATSAPP_URL}
                   eventName="whatsapp_click"
@@ -910,6 +985,7 @@ export default function Home() {
           </div>
         </footer>
       </div>
-    </main>
+      </main>
+    </QuoteProvider>
   );
 }
