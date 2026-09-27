@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 
@@ -129,7 +130,7 @@ export default function LandingPageAdvocaciaCase() {
       <div className="relative z-10">
         <header className="border-b border-white/10 bg-[#090c11]/88 backdrop-blur-xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-            <a href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="relative h-10 w-10 overflow-hidden rounded-full">
                 <Image
                   src="/branding/wal-brasil-logo.png"
@@ -143,15 +144,15 @@ export default function LandingPageAdvocaciaCase() {
                 <p className="font-semibold leading-none">Wal Brasil</p>
                 <p className="mt-1 text-xs text-slate-400">Web Developer</p>
               </div>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#projetos"
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white"
             >
               <ArrowLeftIcon />
               Voltar aos projetos
-            </a>
+            </Link>
           </div>
         </header>
 
@@ -188,20 +189,20 @@ export default function LandingPageAdvocaciaCase() {
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
+                <Link
                   href="/demos/advocacia"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-200 px-6 py-3.5 font-semibold text-[#17130b] transition hover:bg-amber-100"
                 >
                   Ver demonstração completa
                   <ExternalIcon />
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="/#contato"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Quero uma landing page
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -365,21 +366,21 @@ export default function LandingPageAdvocaciaCase() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
+                <Link
                   href="/#contato"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-200 px-6 py-3.5 font-semibold text-[#17130b] transition hover:bg-amber-100"
                 >
                   Solicitar orçamento
                   <ArrowIcon />
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="/demos/advocacia"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Abrir demonstração
                   <ExternalIcon />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -400,9 +401,9 @@ export default function LandingPageAdvocaciaCase() {
               <p>© 2026 Wal Brasil. Todos os direitos reservados.</p>
             </div>
 
-            <a href="/" className="transition hover:text-slate-300">
+            <Link href="/" className="transition hover:text-slate-300">
               walbrasil.dev
-            </a>
+            </Link>
           </div>
         </footer>
       </div>

@@ -382,6 +382,7 @@ export default function Home() {
                   fill
                   sizes="(max-width: 1024px) 100vw, 560px"
                   quality={75}
+                  loading="eager"
                   className={styles.featuredProjectImage}
                 />
                 <div className={styles.featuredProjectVisualShade} />
@@ -420,7 +421,7 @@ export default function Home() {
               <div className={`${styles.heroTickerTrack} ${styles.heroTickerTrackLeft}`}>
                 {[0, 1].map((copy) => (
                   <div className={styles.heroTickerSet} aria-hidden={copy === 1} key={copy}>
-                    {heroTickerTop.map((item, index) => (
+                    {heroTickerTop.map((item) => (
                       <span
                         className={styles.heroTickerChip}
                         key={`${copy}-${item}`}
@@ -438,7 +439,7 @@ export default function Home() {
               <div className={`${styles.heroTickerTrack} ${styles.heroTickerTrackRight}`}>
                 {[0, 1].map((copy) => (
                   <div className={styles.heroTickerSet} aria-hidden={copy === 1} key={copy}>
-                    {heroTickerBottom.map((item, index) => (
+                    {heroTickerBottom.map((item) => (
                       <span
                         className={styles.heroTickerChip}
                         key={`${copy}-${item}`}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 
@@ -164,7 +165,7 @@ export default function BlogWordpressSeoCasePage() {
       <div className="relative z-10">
         <header className="border-b border-white/10 bg-[#0a0b0d]/90 backdrop-blur-xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-            <a href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full shadow-lg shadow-blue-500/20">
                 <Image
                   src="/branding/wal-brasil-logo.png"
@@ -178,15 +179,15 @@ export default function BlogWordpressSeoCasePage() {
                 <p className="font-semibold leading-none">Wal Brasil</p>
                 <p className="mt-1 text-xs text-slate-400">Web Developer</p>
               </div>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#projetos"
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white"
             >
               <ArrowLeftIcon />
               Voltar aos projetos
-            </a>
+            </Link>
           </div>
         </header>
 
@@ -233,12 +234,12 @@ export default function BlogWordpressSeoCasePage() {
                   Visitar blog
                   <ExternalIcon />
                 </a>
-                <a
+                <Link
                   href="/#contato"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Quero um projeto semelhante
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -277,11 +278,10 @@ export default function BlogWordpressSeoCasePage() {
                     </div>
 
                     <div className="overflow-hidden border-y border-white/10 bg-black/20">
-                      <img
+                      <Image
                         src="/projetos/blog/estatistica-no-enem.jpg"
                         alt="Imagem do artigo Estatística no ENEM no Blog Waldemática"
-                        className="block h-auto w-full object-contain transition duration-500 group-hover:scale-[1.015]"
-                      />
+                        className="block h-auto w-full object-contain transition duration-500 group-hover:scale-[1.015]" />
                     </div>
 
                     <div className="flex items-center justify-between gap-4 p-5">
@@ -507,19 +507,19 @@ export default function BlogWordpressSeoCasePage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
+                <Link
                   href="/#contato"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-200 px-6 py-3.5 font-semibold text-[#17130b] transition hover:bg-amber-100"
                 >
                   Solicitar orçamento
                   <ArrowIcon />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/#projetos"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Ver outros projetos
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -539,9 +539,9 @@ export default function BlogWordpressSeoCasePage() {
               </div>
               <p>© 2026 Wal Brasil. Todos os direitos reservados.</p>
             </div>
-            <a href="/" className="transition hover:text-slate-300">
+            <Link href="/" className="transition hover:text-slate-300">
               walbrasil.dev
-            </a>
+            </Link>
           </div>
         </footer>
       </div>

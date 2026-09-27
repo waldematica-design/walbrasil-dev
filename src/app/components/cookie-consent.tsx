@@ -46,18 +46,27 @@ export function CookieConsent({ containerId }: { containerId: string }) {
     if (saved === "granted" || saved === "denied") {
       gtagConsent("update", saved);
       if (saved === "granted") loadGoogleTagManager(containerId);
-    } else {
-      setOpen(true);
     }
 
     const openFromHash = () => {
       if (window.location.hash === PRIVACY_HASH) setOpen(true);
     };
 
-    openFromHash();
+    const initialOpenTimer = window.setTimeout(() => {
+      if (
+        (saved !== "granted" && saved !== "denied") ||
+        window.location.hash === PRIVACY_HASH
+      ) {
+        setOpen(true);
+      }
+    }, 0);
+
     window.addEventListener("hashchange", openFromHash);
 
-    return () => window.removeEventListener("hashchange", openFromHash);
+    return () => {
+      window.clearTimeout(initialOpenTimer);
+      window.removeEventListener("hashchange", openFromHash);
+    };
   }, [containerId]);
 
   function save(nextChoice: ConsentChoice) {

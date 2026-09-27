@@ -92,29 +92,36 @@ export default function SolutionSelector() {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updatePreference = () => setReduceMotion(mediaQuery.matches);
+    const initialPreferenceTimer = window.setTimeout(updatePreference, 0);
 
-    updatePreference();
     mediaQuery.addEventListener("change", updatePreference);
 
-    return () => mediaQuery.removeEventListener("change", updatePreference);
+    return () => {
+      window.clearTimeout(initialPreferenceTimer);
+      mediaQuery.removeEventListener("change", updatePreference);
+    };
   }, []);
 
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    const schedule = (callback: () => void, delay: number) => {
+      const timer = setTimeout(callback, delay);
+      timers.push(timer);
+    };
 
     if (reduceMotion) {
-      setTypedText(activeSolution.request);
-      setPhase("revealed");
+      schedule(() => {
+        setTypedText(activeSolution.request);
+        setPhase("revealed");
+      }, 0);
 
-      timeout = setTimeout(() => {
+      schedule(() => {
         setActiveIndex((current) => (current + 1) % solutions.length);
       }, 6500);
 
-      return () => clearTimeout(timeout);
+      return () => timers.forEach(clearTimeout);
     }
-
-    setTypedText("");
-    setPhase("typing");
 
     let characterIndex = 0;
 
@@ -123,20 +130,20 @@ export default function SolutionSelector() {
       setTypedText(activeSolution.request.slice(0, characterIndex));
 
       if (characterIndex < activeSolution.request.length) {
-        timeout = setTimeout(typeNextCharacter, 42);
+        schedule(typeNextCharacter, 42);
         return;
       }
 
-      timeout = setTimeout(() => {
+      schedule(() => {
         setPhase("processing");
 
-        timeout = setTimeout(() => {
+        schedule(() => {
           setPhase("revealed");
 
-          timeout = setTimeout(() => {
+          schedule(() => {
             setPhase("leaving");
 
-            timeout = setTimeout(() => {
+            schedule(() => {
               setActiveIndex((current) => (current + 1) % solutions.length);
             }, 500);
           }, 4200);
@@ -144,9 +151,13 @@ export default function SolutionSelector() {
       }, 550);
     };
 
-    timeout = setTimeout(typeNextCharacter, 450);
+    schedule(() => {
+      setTypedText("");
+      setPhase("typing");
+      schedule(typeNextCharacter, 450);
+    }, 0);
 
-    return () => clearTimeout(timeout);
+    return () => timers.forEach(clearTimeout);
   }, [activeIndex, activeSolution.request, reduceMotion]);
 
   const panelVisible = phase === "revealed";

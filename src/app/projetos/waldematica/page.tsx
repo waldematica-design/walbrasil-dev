@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 
@@ -114,7 +115,7 @@ export default function WaldematicaCasePage() {
       <div className="relative z-10">
         <header className="border-b border-white/10 bg-[#090c11]/88 backdrop-blur-xl">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-            <a href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full shadow-lg shadow-blue-500/20">
                 <Image
                   src="/branding/wal-brasil-logo.png"
@@ -128,15 +129,15 @@ export default function WaldematicaCasePage() {
                 <p className="font-semibold leading-none">Wal Brasil</p>
                 <p className="mt-1 text-xs text-slate-400">Web Developer</p>
               </div>
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#projetos"
               className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-white"
             >
               <ArrowLeftIcon />
               Voltar aos projetos
-            </a>
+            </Link>
           </div>
         </header>
 
@@ -183,12 +184,12 @@ export default function WaldematicaCasePage() {
                   Visitar site
                   <ExternalIcon />
                 </a>
-                <a
+                <Link
                   href="/#contato"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Quero um projeto semelhante
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -205,13 +206,12 @@ export default function WaldematicaCasePage() {
                 </div>
 
                 <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-                  <img
+                  <Image
                     src="/projetos/waldematica/home-waldematica.jpg"
                     alt="Página inicial pública da Waldemática"
                     width={2254}
                     height={1269}
-                    className="block h-auto w-full object-contain"
-                  />
+                    className="block h-auto w-full object-contain" />
                 </div>
               </div>
             </div>
@@ -304,7 +304,7 @@ export default function WaldematicaCasePage() {
                     className="overflow-hidden rounded-2xl border border-white/10 bg-black/20"
                     style={{ aspectRatio: "2254 / 1269" }}
                   >
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.alt}
                       width={2254}
@@ -384,13 +384,12 @@ export default function WaldematicaCasePage() {
               </div>
 
               <div className="mt-5 overflow-hidden rounded-2xl border border-white/10 bg-[#0d1218] p-4">
-                <img
+                <Image
                   src="/projetos/waldematica/revisao-2a-fase-waldematica.jpg"
                   alt="Página comercial da Revisão 2ª Fase da Waldemática"
                   width={2254}
                   height={1269}
-                  className="block aspect-video w-full rounded-xl border border-white/10 object-cover object-top"
-                />
+                  className="block aspect-video w-full rounded-xl border border-white/10 object-cover object-top" />
               </div>
 
               <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -508,19 +507,19 @@ export default function WaldematicaCasePage() {
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
+                <Link
                   href="/#contato"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-semibold text-[#07111f] transition hover:bg-blue-50"
                 >
                   Solicitar orçamento
                   <ArrowIcon />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/#projetos"
                   className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold transition hover:bg-white/10"
                 >
                   Ver outros projetos
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -540,9 +539,9 @@ export default function WaldematicaCasePage() {
               </div>
               <p>© 2026 Wal Brasil. Todos os direitos reservados.</p>
             </div>
-            <a href="/" className="transition hover:text-slate-300">
+            <Link href="/" className="transition hover:text-slate-300">
               walbrasil.dev
-            </a>
+            </Link>
           </div>
         </footer>
       </div>
