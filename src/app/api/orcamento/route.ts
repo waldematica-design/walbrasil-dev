@@ -41,7 +41,10 @@ export async function POST(request: Request) {
   const description = asText(body.description, 2000);
   const name = asText(body.name, 120);
   const phone = asText(body.phone, 40);
-  const email = asText(body.email, 200);
+  const email = asText(body.email, 200)
+    .normalize("NFKC")
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .toLowerCase();
   const website = asText(body.website, 200);
   const source = asText(body.source, 500);
 
@@ -98,7 +101,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       from,
       to: recipients,
-      reply_to: email,
+      reply_to: [email],
       subject,
       html: `
         <div style="font-family:Arial,sans-serif;line-height:1.6;color:#172033">
