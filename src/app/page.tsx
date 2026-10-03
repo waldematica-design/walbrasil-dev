@@ -144,11 +144,11 @@ const projects = [
     imageAlt: "Página inicial real do site Waldemática",
   },
   {
-    eyebrow: "NEXT.JS + MDX + SEO",
+    eyebrow: "NEXT.JS + CONTEÚDO + COMUNIDADE",
     title: "Blog Waldemática",
     description:
-      "Projeto editorial em Next.js e MDX com foco em Matemática, SEO técnico, conteúdo estruturado, performance e publicação versionada.",
-    stack: ["Next.js", "MDX", "SEO", "Supabase"],
+      "Projeto editorial em Next.js com artigos em Matemática, busca, calendário, autenticação, comunidade, SEO técnico, conteúdo estruturado e publicação versionada.",
+    stack: ["Next.js", "MDX", "Supabase", "SEO"],
     href: "/projetos/blog-wordpress-seo",
     accent: "from-amber-300/15 via-emerald-400/10 to-transparent",
     type: "Projeto real",
@@ -178,6 +178,30 @@ const projects = [
     type: "Projeto demonstrativo",
     image: "/demos/clinica-silva/recepcao.jpg",
     imageAlt: "Recepção da Clínica Silva em projeto demonstrativo",
+  },
+  {
+    eyebrow: "ATENDIMENTO + AGENDAMENTO + IA",
+    title: "Clínica Aurora",
+    description:
+      "Demonstração de clínica de dermatologia e estética com agente de IA para atendimento, consulta de horários, agendamento, remarcação e cancelamento pelo site e WhatsApp.",
+    stack: ["Next.js", "IA", "WhatsApp", "Agendamento"],
+    href: "https://tecerale.com.br/agentes/atendimento-agendamento",
+    accent: "from-cyan-300/15 via-blue-400/10 to-transparent",
+    type: "Projeto demonstrativo",
+    image: "/branding/wal-brasil-logo.png",
+    imageAlt: "Clínica Aurora — atendimento e agendamento com inteligência artificial",
+  },
+  {
+    eyebrow: "VENDAS + IA",
+    title: "Patas & Estilo",
+    description:
+      "Loja pet demonstrativa com agente de vendas que entende o que o cliente procura, recomenda produtos, responde dúvidas e conduz a conversa até a compra.",
+    stack: ["Next.js", "IA", "Vendas", "WhatsApp"],
+    href: "https://tecerale.com.br/agentes/vendas",
+    accent: "from-amber-300/15 via-emerald-400/10 to-transparent",
+    type: "Projeto demonstrativo",
+    image: "/branding/wal-brasil-logo.png",
+    imageAlt: "Patas & Estilo — demonstração de vendas com inteligência artificial",
   },
 ];
 
@@ -706,6 +730,68 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
+                    ) : project.title === "Clínica Aurora" ? (
+                      <div className="absolute inset-0 overflow-hidden bg-[#071827]">
+                        <div className="absolute -left-12 -top-16 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl" />
+                        <div className="absolute -bottom-20 right-0 h-56 w-56 rounded-full bg-blue-500/20 blur-3xl" />
+                        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(103,232,249,.14)_1px,transparent_1px),linear-gradient(90deg,rgba(103,232,249,.14)_1px,transparent_1px)] [background-size:32px_32px]" />
+
+                        <div className="absolute inset-x-6 bottom-6 top-16 flex items-center justify-between gap-6">
+                          <div className="max-w-[58%]">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                              Atendimento inteligente
+                            </p>
+                            <p className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                              CLÍNICA AURORA
+                            </p>
+                            <p className="mt-2 text-xs leading-5 text-slate-300">
+                              IA para atendimento e agendamento no site e WhatsApp.
+                            </p>
+                          </div>
+
+                          <div className="grid w-[38%] grid-cols-2 gap-2">
+                            {["Assistente IA", "Agenda", "WhatsApp", "Handoff"].map((item) => (
+                              <div
+                                key={item}
+                                className="flex min-h-14 items-center justify-center rounded-xl border border-cyan-300/15 bg-white/[0.055] px-2 text-center text-[10px] font-semibold text-cyan-100 backdrop-blur"
+                              >
+                                {item}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ) : project.title === "Patas & Estilo" ? (
+                      <div className="absolute inset-0 overflow-hidden bg-[#15130d]">
+                        <div className="absolute -left-12 -top-16 h-52 w-52 rounded-full bg-amber-400/20 blur-3xl" />
+                        <div className="absolute -bottom-20 right-0 h-56 w-56 rounded-full bg-emerald-500/15 blur-3xl" />
+                        <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(253,230,138,.12)_1px,transparent_1px),linear-gradient(90deg,rgba(253,230,138,.12)_1px,transparent_1px)] [background-size:32px_32px]" />
+
+                        <div className="absolute inset-x-6 bottom-6 top-16 flex items-center justify-between gap-6">
+                          <div className="max-w-[58%]">
+                            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-amber-300">
+                              Vendas com IA
+                            </p>
+                            <p className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                              PATAS & ESTILO
+                            </p>
+                            <p className="mt-2 text-xs leading-5 text-slate-300">
+                              Recomendação de produtos e atendimento comercial inteligente.
+                            </p>
+                          </div>
+
+                          <div className="grid w-[38%] grid-cols-2 gap-2">
+                            {["Recomenda", "Compara", "Dúvidas", "Compra"].map((item) => (
+                              <div
+                                key={item}
+                                className="flex min-h-14 items-center justify-center rounded-xl border border-amber-300/15 bg-white/[0.055] px-2 text-center text-[10px] font-semibold text-amber-100 backdrop-blur"
+                              >
+                                {item}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     ) : (
                       <Image
                         src={project.image}
@@ -758,10 +844,10 @@ export default function Home() {
                     rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-emerald-100"
                   >
-                    {project.href.startsWith("http")
-                      ? "Visitar site"
-                      : project.type === "Projeto demonstrativo"
-                        ? "Ver demonstração"
+                    {project.type === "Projeto demonstrativo"
+                      ? "Ver demonstração"
+                      : project.href.startsWith("http")
+                        ? "Visitar site"
                         : "Ver projeto"}
                     <ExternalIcon />
                   </a>
@@ -964,6 +1050,43 @@ export default function Home() {
                 <span className="hidden text-slate-600 sm:inline">•</span>
                 <span>Agente comercial TECÉRALE: (17) 99653-5988</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="px-6 pb-8 lg:px-8">
+          <div className="mx-auto flex max-w-7xl flex-col gap-6 rounded-3xl border border-emerald-300/20 bg-gradient-to-br from-[#0b1a24] via-[#0b141d] to-[#0d1117] p-6 shadow-2xl shadow-black/10 sm:p-7 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300">
+                Desenvolvimento Web
+              </p>
+              <h2 className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl">
+                Este site foi criado e desenvolvido por{" "}
+                <a
+                  href="https://walbrasil.dev"
+                  className="text-emerald-300 transition hover:text-emerald-200"
+                >
+                  @walbrasil.dev
+                </a>
+              </h2>
+              <p className="mt-2 text-sm text-slate-400">
+                Tem um projeto em mente? Solicite um orçamento.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#projetos"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/15 bg-white/[0.035] px-5 text-sm font-semibold text-white transition hover:bg-white/[0.07]"
+              >
+                Portfólio
+              </a>
+
+              <QuoteTrigger
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-500 px-5 text-sm font-semibold text-white transition hover:bg-emerald-400"
+              >
+                Solicitar orçamento
+              </QuoteTrigger>
             </div>
           </div>
         </section>
