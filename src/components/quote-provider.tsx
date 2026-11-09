@@ -165,14 +165,14 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
 
       {isOpen ? (
         <div
-          className="fixed inset-0 z-[100] grid place-items-center bg-[#020713]/80 p-4 backdrop-blur-md"
+          className="fixed inset-0 z-[120] grid place-items-center bg-[#020713]/80 p-3 backdrop-blur-md sm:p-4"
           role="presentation"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setIsOpen(false);
           }}
         >
           <section
-            className="relative max-h-[min(760px,calc(100dvh-32px))] w-full max-w-2xl overflow-y-auto rounded-[1.75rem] border border-blue-300/20 bg-[#081421] p-6 text-white shadow-[0_35px_120px_rgba(0,0,0,.55)] sm:p-8"
+            className="relative box-border max-h-[calc(100dvh-24px)] w-full min-w-0 max-w-2xl overflow-x-hidden overflow-y-auto rounded-[1.75rem] border border-blue-300/20 bg-[#081421] p-4 text-white shadow-[0_35px_120px_rgba(0,0,0,.55)] sm:max-h-[min(760px,calc(100dvh-32px))] sm:p-8"
             role="dialog"
             aria-modal="true"
             aria-labelledby="quote-title"
@@ -214,8 +214,8 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                 </button>
               </div>
             ) : (
-              <form className="mt-8 grid gap-5" onSubmit={handleSubmit}>
-                <label className="grid gap-2 text-sm font-semibold text-slate-200">
+              <form className="mt-8 grid min-w-0 grid-cols-1 gap-5" onSubmit={handleSubmit}>
+                <label className="grid min-w-0 grid-cols-1 gap-2 text-sm font-semibold text-slate-200">
                   Que tipo de projeto tem em mente?
                   <select
                     ref={projectSelectRef}
@@ -227,7 +227,7 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                         projectType: event.target.value,
                       }))
                     }
-                    className="h-12 rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition focus:border-blue-300/50"
+                    className="h-12 w-full min-w-0 max-w-full rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition focus:border-blue-300/50"
                   >
                     <option value="" disabled>
                       Selecione uma opção
@@ -240,7 +240,7 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                   </select>
                 </label>
 
-                <label className="grid gap-2 text-sm font-semibold text-slate-200">
+                <label className="grid min-w-0 grid-cols-1 gap-2 text-sm font-semibold text-slate-200">
                   Descreva sua ideia / projeto
                   <textarea
                     required
@@ -255,12 +255,12 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                       }))
                     }
                     placeholder="O que você precisa, qual o objetivo e o que já existe hoje?"
-                    className="resize-y rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 py-3 font-normal leading-6 text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50"
+                    className="w-full min-w-0 max-w-full resize-y rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 py-3 font-normal leading-6 text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50"
                   />
                 </label>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="grid gap-2 text-sm font-semibold text-slate-200">
+                <div className="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
+                  <label className="grid min-w-0 grid-cols-1 gap-2 text-sm font-semibold text-slate-200">
                     Nome
                     <input
                       required
@@ -272,11 +272,11 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                           name: event.target.value,
                         }))
                       }
-                      className="h-12 rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition focus:border-blue-300/50"
+                      className="h-12 w-full min-w-0 max-w-full rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition focus:border-blue-300/50"
                     />
                   </label>
 
-                  <label className="grid gap-2 text-sm font-semibold text-slate-200">
+                  <label className="grid min-w-0 grid-cols-1 gap-2 text-sm font-semibold text-slate-200">
                     Telefone / WhatsApp
                     <input
                       required
@@ -290,12 +290,12 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                         }))
                       }
                       placeholder="(17) 99999-9999"
-                      className="h-12 rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50"
+                      className="h-12 w-full min-w-0 max-w-full rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition placeholder:text-slate-600 focus:border-blue-300/50"
                     />
                   </label>
                 </div>
 
-                <label className="grid gap-2 text-sm font-semibold text-slate-200">
+                <label className="grid min-w-0 grid-cols-1 gap-2 text-sm font-semibold text-slate-200">
                   E-mail
                   <input
                     required
@@ -308,7 +308,7 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                         email: event.target.value,
                       }))
                     }
-                    className="h-12 rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition focus:border-blue-300/50"
+                    className="h-12 w-full min-w-0 max-w-full rounded-xl border border-blue-300/15 bg-[#0d1c2e] px-4 font-normal text-white outline-none transition focus:border-blue-300/50"
                   />
                 </label>
 
@@ -343,7 +343,7 @@ export function QuoteProvider({ children }: { children: ReactNode }) {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="min-h-12 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 px-6 font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60"
+                  className="min-h-12 w-full min-w-0 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-400 px-6 font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-60"
                 >
                   {status === "sending" ? "Enviando..." : "Enviar solicitação"}
                 </button>
