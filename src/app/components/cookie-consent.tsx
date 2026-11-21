@@ -103,7 +103,7 @@ export function CookieConsent({ containerId }: { containerId: string }) {
           </p>
           <Link
             className="mt-3 inline-block text-sm font-semibold text-blue-300 underline underline-offset-4"
-            href="/politica-de-privacidade/"
+            href="/politica-de-privacidade"
           >
             Ver Política de Privacidade
           </Link>

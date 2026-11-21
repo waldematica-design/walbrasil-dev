@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Termos de Serviço",
   description: "Termos de Serviço dos sites, demonstrações e soluções da Wal Brasil.",
-  alternates: { canonical: "/termos-de-servico/" },
+  alternates: { canonical: "/termos-de-servico" },
 };
 
 export default function TermosDeServicoPage() {
@@ -64,7 +64,7 @@ export default function TermosDeServicoPage() {
 
           <section>
             <h2 className="mb-3 text-2xl font-semibold text-zinc-900">9. Privacidade</h2>
-            <p>O tratamento de dados pessoais é descrito na <Link href="/politica-de-privacidade/" className="font-medium text-zinc-950 underline underline-offset-4">Política de Privacidade</Link>. Solicitações de eliminação também podem ser encaminhadas pela página de exclusão de dados.</p>
+            <p>O tratamento de dados pessoais é descrito na <Link href="/politica-de-privacidade" className="font-medium text-zinc-950 underline underline-offset-4">Política de Privacidade</Link>. Solicitações de eliminação também podem ser encaminhadas pela página de exclusão de dados.</p>
           </section>
 
           <section>

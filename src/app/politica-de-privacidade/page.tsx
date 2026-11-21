@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Política de Privacidade",
   description: "Política de Privacidade, cookies e proteção de dados da Wal Brasil.",
-  alternates: { canonical: "/politica-de-privacidade/" },
+  alternates: { canonical: "/politica-de-privacidade" },
 };
 
 export default function PoliticaDePrivacidadePage() {

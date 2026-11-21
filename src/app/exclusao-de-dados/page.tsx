@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Exclusão de Dados | Wal Brasil",
+  description: "Como solicitar a exclusão de dados pessoais relacionados aos serviços de Wal Brasil.",
+  alternates: { canonical: "/exclusao-de-dados" },
+};
+
 export default function ExclusaoDeDadosPage() {
   return (
     <main className="min-h-screen bg-white text-zinc-900">
